@@ -4,10 +4,7 @@ const printerData = {
 
   ip: "10.11.17.42",
 
-  status: {
-    level: "healthy",
-    title: "Online"
-  },
+  status: "Online",
 
   tonerRemaining: 64,
 
@@ -20,53 +17,50 @@ const printerData = {
 
   history: [
     {
-      installed: "Sep 1, 2026",
-      status: "Current",
-      pages: 1235
+      date: "Sep 1, 2026",
+      pages: 1235,
+      status: "Current"
     },
+
     {
-      installed: "Jul 20, 2026",
-      status: "Replaced",
-      pages: 2811
+      date: "Jul 20, 2026",
+      pages: 2811,
+      status: "Replaced"
     },
+
     {
-      installed: "Jun 5, 2026",
-      status: "Replaced",
-      pages: 2904
+      date: "Jun 5, 2026",
+      pages: 2904,
+      status: "Replaced"
     }
   ]
 
 };
 
 
-// ==============================
-// HELPERS
-// ==============================
-
 function formatNumber(value) {
-  return new Intl.NumberFormat("en-US").format(value);
+  return new Intl.NumberFormat(
+    "en-US"
+  ).format(value);
 }
 
 
-function formatDate(dateString) {
+function shortDate(value) {
 
   return new Intl.DateTimeFormat(
     "en-US",
     {
       month: "short",
-      day: "numeric",
-      year: "numeric"
+      day: "numeric"
     }
   ).format(
-    new Date(dateString + "T00:00:00")
+    new Date(
+      value + "T00:00:00"
+    )
   );
 
 }
 
-
-// ==============================
-// DASHBOARD
-// ==============================
 
 function updateDashboard(data) {
 
@@ -79,45 +73,20 @@ function updateDashboard(data) {
     Math.min(
       100,
       Math.round(
-        (
-          pagesPrinted /
-          data.cartridge.typicalLife
-        ) * 100
+        pagesPrinted /
+        data.cartridge.typicalLife *
+        100
       )
     );
 
 
-  // ------------------------------
-  // Printer name
-  // ------------------------------
-
-  document
-    .getElementById("printerName")
-    .textContent =
-    data.name;
-
-
-  document
-    .getElementById("printerNameInfo")
-    .textContent =
-    data.name;
-
-
-
-  // ------------------------------
-  // Printer status
-  // ------------------------------
+  /* STATUS */
 
   document
     .getElementById("statusTitle")
     .textContent =
-    data.status.title;
+    data.status;
 
-
-
-  // ------------------------------
-  // Printer IP
-  // ------------------------------
 
   document
     .getElementById("printerIp")
@@ -125,10 +94,7 @@ function updateDashboard(data) {
     data.ip;
 
 
-
-  // ------------------------------
-  // Toner
-  // ------------------------------
+  /* TONER */
 
   document
     .getElementById("tonerRemaining")
@@ -136,33 +102,25 @@ function updateDashboard(data) {
     `${data.tonerRemaining}%`;
 
 
-  document
-    .getElementById("tonerInfo")
-    .textContent =
-    `${data.tonerRemaining}%`;
-
-
-
-  // ------------------------------
-  // Current cartridge
-  // ------------------------------
-
-  document
-    .getElementById("currentCartridgePages")
-    .textContent =
-    formatNumber(pagesPrinted);
+  const degrees =
+    data.tonerRemaining /
+    100 *
+    360;
 
 
   document
-    .getElementById("pagesPrinted")
-    .textContent =
-    formatNumber(pagesPrinted);
+    .getElementById("tonerRing")
+    .style.background =
+    `
+      conic-gradient(
+        #ffffff 0deg ${degrees}deg,
+        rgba(255,255,255,.18)
+        ${degrees}deg 360deg
+      )
+    `;
 
 
-
-  // ------------------------------
-  // Lifetime prints
-  // ------------------------------
+  /* NUMBERS */
 
   document
     .getElementById("lifetimePrints")
@@ -172,60 +130,28 @@ function updateDashboard(data) {
     );
 
 
-
-  // ------------------------------
-  // Cartridge details
-  // ------------------------------
-
   document
-    .getElementById("installedDate")
-    .textContent =
-    formatDate(
-      data.cartridge.installedDate
-    );
-
-
-  document
-    .getElementById("startingCount")
+    .getElementById("pagesPrinted")
     .textContent =
     formatNumber(
-      data.cartridge.startingLifetimeCount
-    );
-
-
-  document
-    .getElementById("currentCount")
-    .textContent =
-    formatNumber(
-      data.cartridge.currentLifetimeCount
+      pagesPrinted
     );
 
 
   document
     .getElementById("typicalLife")
     .textContent =
-    `~${formatNumber(
+    formatNumber(
       data.cartridge.typicalLife
-    )}`;
+    );
 
+
+  /* USAGE */
 
   document
-    .getElementById("typicalLifeLabel")
+    .getElementById("usagePercent")
     .textContent =
-    `~${formatNumber(
-      data.cartridge.typicalLife
-    )} pages`;
-
-
-
-  // ------------------------------
-  // Usage %
-  // ------------------------------
-
-  document
-    .getElementById("usageBadge")
-    .textContent =
-    `${usagePercent}% used`;
+    `${usagePercent}%`;
 
 
   document
@@ -234,58 +160,90 @@ function updateDashboard(data) {
     `${usagePercent}%`;
 
 
-
-  // ------------------------------
-  // Cartridge history
-  // ------------------------------
-
-  const historyBody =
-    document.getElementById(
-      "historyBody"
+  document
+    .getElementById("installedDate")
+    .textContent =
+    shortDate(
+      data.cartridge.installedDate
     );
 
 
-  historyBody.innerHTML = "";
+  document
+    .getElementById("usedPages")
+    .textContent =
+    `${formatNumber(
+      pagesPrinted
+    )} pages`;
 
 
-  data.history.forEach(item => {
+  document
+    .getElementById("typicalLifeBottom")
+    .textContent =
+    `~${formatNumber(
+      data.cartridge.typicalLife
+    )} pages`;
 
-    const row =
-      document.createElement("tr");
+
+  /* HISTORY */
+
+  const historyList =
+    document.getElementById(
+      "historyList"
+    );
 
 
-    row.innerHTML = `
+  historyList.innerHTML = "";
 
-      <td>
-        ${item.installed}
-      </td>
 
-      <td>
-        <span class="history-status ${
+  data.history.forEach(
+    item => {
+
+      const card =
+        document.createElement(
+          "div"
+        );
+
+
+      card.className =
+        `history-item ${
           item.status === "Current"
             ? "current"
-            : "replaced"
-        }">
+            : ""
+        }`;
+
+
+      card.innerHTML = `
+
+        <span class="history-date">
+          ${item.date}
+        </span>
+
+        <strong>
+          ${formatNumber(item.pages)}
+        </strong>
+
+        <small>
+          pages
+        </small>
+
+        <br>
+
+        <span class="history-status">
           ${item.status}
         </span>
-      </td>
 
-      <td>
-        ${formatNumber(item.pages)}
-      </td>
-
-    `;
+      `;
 
 
-    historyBody.appendChild(row);
+      historyList.appendChild(
+        card
+      );
 
-  });
+    }
+  );
 
 
-
-  // ------------------------------
-  // Updated time
-  // ------------------------------
+  /* TIME */
 
   document
     .getElementById("lastUpdated")
@@ -304,8 +262,6 @@ function updateDashboard(data) {
 }
 
 
-// ==============================
-// START
-// ==============================
-
-updateDashboard(printerData);
+updateDashboard(
+  printerData
+);

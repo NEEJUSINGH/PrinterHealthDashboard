@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CS Lab Printer Health</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+
+  <main class="dashboard">
+
+    <header class="topbar">
+
+      <div>
+        <p class="eyebrow">CS LAB</p>
+
+        <h1 id="printerName">
+          Printer 01
+        </h1>
+
+        <p class="muted" id="printerIp">
+          10.11.17.42
+        </p>
+      </div>
+
+      <div class="updated">
+        <span>Last updated</span>
+        <strong id="lastUpdated">--</strong>
+      </div>
+
+    </header>
+
+
+    <!-- Printer Status -->
+
+    <section class="status-card">
+
+      <div
+        class="status-dot healthy"
+        id="statusDot">
+      </div>
+
+      <div>
+        <p
+          class="status-title"
+          id="statusTitle">
+          Healthy
+        </p>
+
+        <p
+          class="muted"
+          id="statusMessage">
+          Printer is online and ready.
+        </p>
+      </div>
+
+    </section>
+
+
+    <!-- Main Numbers -->
+
+    <section class="metrics-grid">
+
+      <article class="metric-card">
+
+        <p class="metric-label">
+          Toner
+        </p>
+
+        <div class="metric-value-row">
+
+          <span
+            class="metric-value"
+            id="tonerRemaining">
+            64%
+          </span>
+
+          <span class="metric-unit">
+            remaining
+          </span>
+
+        </div>
+
+        <div class="progress-track">
+          <div
+            class="progress-fill"
+            id="tonerBar">
+          </div>
+        </div>
+
+      </article>
+
+
+      <article class="metric-card">
+
+        <p class="metric-label">
+          Current cartridge
+        </p>
+
+        <div class="metric-value-row">
+
+          <span
+            class="metric-value"
+            id="pagesCurrent">
+            1,235
+          </span>
+
+          <span class="metric-unit">
+            pages printed
+          </span>
+
+        </div>
+
+        <p
+          class="metric-note"
+          id="installedShort">
+          Since Sep 1
+        </p>
+
+      </article>
+
+
+      <article class="metric-card">
+
+        <p class="metric-label">
+          Lifetime prints
+        </p>
+
+        <div class="metric-value-row">
+
+          <span
+            class="metric-value"
+            id="lifetimePrints">
+            25,615
+          </span>
+
+          <span class="metric-unit">
+            pages
+          </span>
+
+        </div>
+
+      </article>
+
+    </section>
+
+
+    <!-- Current Cartridge -->
+
+    <section class="card">
+
+      <div class="section-heading">
+
+        <div>
+          <p class="eyebrow">
+            CURRENT CARTRIDGE
+          </p>
+
+          <h2>
+            Usage
+          </h2>
+        </div>
+
+        <span
+          class="badge"
+          id="usageBadge">
+          44% used
+        </span>
+
+      </div>
+
+
+      <div class="details-grid">
+
+        <div class="detail">
+          <span>Installed</span>
+          <strong id="installedDate">
+            Sep 1, 2026
+          </strong>
+        </div>
+
+
+        <div class="detail">
+          <span>Starting count</span>
+          <strong id="startingCount">
+            24,380
+          </strong>
+        </div>
+
+
+        <div class="detail">
+          <span>Current count</span>
+          <strong id="currentCount">
+            25,615
+          </strong>
+        </div>
+
+
+        <div class="detail">
+          <span>Pages printed</span>
+          <strong id="pagesPrinted">
+            1,235
+          </strong>
+        </div>
+
+
+        <div class="detail">
+          <span>Typical cartridge life</span>
+          <strong id="typicalLife">
+            ~2,800 pages
+          </strong>
+        </div>
+
+      </div>
+
+
+      <div class="usage-block">
+
+        <div class="usage-labels">
+
+          <span id="usageCurrentLabel">
+            1,235 pages
+          </span>
+
+          <span id="usageTypicalLabel">
+            ~2,800 typical
+          </span>
+
+        </div>
+
+
+        <div class="progress-track large">
+
+          <div
+            class="progress-fill"
+            id="usageBar">
+          </div>
+
+        </div>
+
+
+        <p
+          class="usage-caption"
+          id="usageCaption">
+
+          44% of typical cartridge life used
+
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- Cartridge History -->
+
+    <section class="card">
+
+      <div class="section-heading">
+
+        <div>
+
+          <p class="eyebrow">
+            HISTORY
+          </p>
+
+          <h2>
+            Recent cartridges
+          </h2>
+
+        </div>
+
+      </div>
+
+
+      <div class="history-table-wrap">
+
+        <table>
+
+          <thead>
+
+            <tr>
+              <th>Installed</th>
+              <th>Status</th>
+              <th>Pages printed</th>
+            </tr>
+
+          </thead>
+
+
+          <tbody id="historyBody">
+          </tbody>
+
+        </table>
+
+      </div>
+
+    </section>
+
+
+    <footer>
+      CS Lab Printer Health Dashboard
+    </footer>
+
+  </main>
+
+
+  <script src="app.js"></script>
+
+</body>
+</html>

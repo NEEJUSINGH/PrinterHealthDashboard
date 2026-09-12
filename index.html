@@ -4,13 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Printer Health</title>
+  <title>CS Lab Printer Dashboard</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
-
-  <link rel="preconnect"
-        href="https://fonts.gstatic.com"
-        crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
   <link
     href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
@@ -20,372 +17,403 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 
-
 <body>
 
-<main class="dashboard">
+  <div class="app-shell">
 
+    <!-- TOP BAR -->
 
-  <!-- HEADER -->
-
-  <header class="header">
-
-    <div>
-
-      <div class="brand">
-        <div class="brand-icon">P</div>
-
-        <span>CS Lab Printer Monitor</span>
-      </div>
-
-    </div>
-
-
-    <div class="last-updated">
-
-      <span>Updated</span>
-
-      <strong id="lastUpdated">
-        --
-      </strong>
-
-    </div>
-
-  </header>
-
-
-
-  <!-- PRINTER HERO -->
-
-  <section class="hero-card">
-
-
-    <div class="hero-left">
-
-      <p class="small-label">
-        CS LAB
-      </p>
-
-      <h1 id="printerName">
-        Printer 01
-      </h1>
-
-      <p class="printer-ip"
-         id="printerIp">
-        10.11.17.42
-      </p>
-
-
-      <div class="status-pill">
-
-        <span class="status-dot"></span>
-
-        <span id="statusTitle">
-          Online & Ready
-        </span>
-
-      </div>
-
-    </div>
-
-
-
-    <div class="hero-right">
-
-      <div class="printer-visual">
-
-        <div class="printer-top"></div>
-
-        <div class="printer-body">
-
-          <div class="paper"></div>
-
-          <div class="printer-light"></div>
-
-        </div>
-
-      </div>
-
-    </div>
-
-
-  </section>
-
-
-
-  <!-- MAIN GRID -->
-
-  <section class="main-grid">
-
-
-    <!-- TONER -->
-
-    <article class="card toner-card">
-
-      <div class="card-heading">
-
-        <div>
-
-          <p class="small-label">
-            TONER
-          </p>
-
-          <h2>
-            Cartridge level
-          </h2>
-
-        </div>
-
-      </div>
-
-
-      <div class="toner-gauge"
-           id="tonerGauge">
-
-        <div class="gauge-center">
-
-          <strong id="tonerRemaining">
-            64%
-          </strong>
-
-          <span>
-            remaining
-          </span>
-
-        </div>
-
-      </div>
-
-
-      <p class="card-description">
-
-        Current toner level reported
-        by the printer.
-
-      </p>
-
-    </article>
-
-
-
-
-    <!-- CURRENT CARTRIDGE -->
-
-    <article class="card cartridge-card">
-
-
-      <div class="card-heading">
-
-        <div>
-
-          <p class="small-label">
-            CURRENT CARTRIDGE
-          </p>
-
-          <h2>
-            Usage
-          </h2>
-
-        </div>
-
-
-        <div class="usage-badge"
-             id="usageBadge">
-
-          44% used
-
-        </div>
-
-      </div>
-
-
-
-      <div class="cartridge-big-number">
-
-        <strong id="pagesPrinted">
-          1,235
-        </strong>
-
-        <span>
-          pages printed
-        </span>
-
-      </div>
-
-
-
-      <div class="usage-progress">
-
-        <div class="usage-progress-fill"
-             id="usageBar">
-        </div>
-
-      </div>
-
-
-
-      <div class="usage-range">
-
-        <span>
-          0
-        </span>
-
-        <span id="typicalLifeLabel">
-          ~2,800 pages
-        </span>
-
-      </div>
-
-
-
-      <div class="cartridge-details">
-
-
-        <div>
-
-          <span>
-            Installed
-          </span>
-
-          <strong id="installedDate">
-            Sep 1, 2026
-          </strong>
-
-        </div>
-
-
-        <div>
-
-          <span>
-            Starting count
-          </span>
-
-          <strong id="startingCount">
-            24,380
-          </strong>
-
-        </div>
-
-
-      </div>
-
-
-    </article>
-
-
-  </section>
-
-
-
-  <!-- QUICK STATS -->
-
-  <section class="stats-grid">
-
-
-    <article class="stat-card">
-
-      <div class="stat-icon">
-        ↗
-      </div>
+    <header class="topbar">
 
       <div>
-
-        <span>
-          Lifetime prints
-        </span>
-
-        <strong id="lifetimePrints">
-          25,615
-        </strong>
-
-      </div>
-
-    </article>
-
-
-
-    <article class="stat-card">
-
-      <div class="stat-icon">
-        ◫
-      </div>
-
-      <div>
-
-        <span>
-          Current cartridge
-        </span>
-
-        <strong id="currentCartridgePages">
-          1,235
-        </strong>
-
-      </div>
-
-    </article>
-
-
-
-    <article class="stat-card">
-
-      <div class="stat-icon">
-        ◎
-      </div>
-
-      <div>
-
-        <span>
-          Typical cartridge life
-        </span>
-
-        <strong id="typicalLife">
-          ~2,800
-        </strong>
-
-      </div>
-
-    </article>
-
-
-  </section>
-
-
-
-  <!-- HISTORY -->
-
-  <section class="card history-card">
-
-
-    <div class="card-heading">
-
-      <div>
-
-        <p class="small-label">
-          HISTORY
+        <p class="eyebrow">CS LAB</p>
+        <h1>Printer Health Dashboard</h1>
+        <p class="subtitle">
+          Monitor printer status and cartridge usage
         </p>
-
-        <h2>
-          Recent cartridges
-        </h2>
-
       </div>
 
-    </div>
+      <div class="printer-selector">
+        <span>Printer</span>
+        <strong id="printerName">Printer 01</strong>
+      </div>
+
+    </header>
 
 
-    <div id="historyList"
-         class="history-list">
+    <main>
 
-    </div>
+      <!-- SUMMARY CARDS -->
+
+      <section class="summary-grid">
+
+        <article class="summary-card status-summary">
+
+          <div class="summary-icon green">
+            ●
+          </div>
+
+          <div>
+            <span class="summary-label">
+              Printer Status
+            </span>
+
+            <strong id="statusTitle">
+              Online
+            </strong>
+
+            <small>
+              Ready
+            </small>
+          </div>
+
+        </article>
 
 
-  </section>
+        <article class="summary-card">
+
+          <div class="summary-icon blue">
+            ◔
+          </div>
+
+          <div>
+            <span class="summary-label">
+              Toner
+            </span>
+
+            <strong id="tonerRemaining">
+              64%
+            </strong>
+
+            <small>
+              Remaining
+            </small>
+          </div>
+
+        </article>
 
 
-</main>
+        <article class="summary-card">
+
+          <div class="summary-icon purple">
+            ▣
+          </div>
+
+          <div>
+            <span class="summary-label">
+              Current Cartridge
+            </span>
+
+            <strong id="currentCartridgePages">
+              1,235
+            </strong>
+
+            <small>
+              Pages printed
+            </small>
+          </div>
+
+        </article>
 
 
-<script src="app.js"></script>
+        <article class="summary-card">
+
+          <div class="summary-icon orange">
+            ↗
+          </div>
+
+          <div>
+            <span class="summary-label">
+              Lifetime Prints
+            </span>
+
+            <strong id="lifetimePrints">
+              25,615
+            </strong>
+
+            <small>
+              Total pages
+            </small>
+          </div>
+
+        </article>
+
+      </section>
+
+
+
+      <!-- MAIN DASHBOARD -->
+
+      <section class="dashboard-grid">
+
+
+        <!-- CARTRIDGE USAGE -->
+
+        <article class="panel">
+
+          <div class="panel-header">
+
+            <div>
+              <p class="eyebrow">
+                CURRENT CARTRIDGE
+              </p>
+
+              <h2>
+                Cartridge Usage
+              </h2>
+            </div>
+
+            <span
+              class="usage-pill"
+              id="usageBadge"
+            >
+              44% used
+            </span>
+
+          </div>
+
+
+          <div class="usage-main">
+
+            <div class="usage-number">
+
+              <strong id="pagesPrinted">
+                1,235
+              </strong>
+
+              <span>
+                pages printed
+              </span>
+
+            </div>
+
+
+            <div class="progress-area">
+
+              <div class="progress-bar">
+
+                <div
+                  class="progress-fill"
+                  id="usageBar"
+                ></div>
+
+              </div>
+
+
+              <div class="progress-labels">
+
+                <span>
+                  0
+                </span>
+
+                <span id="typicalLifeLabel">
+                  ~2,800 pages
+                </span>
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <div class="detail-grid">
+
+            <div class="detail-item">
+
+              <span>
+                Installed
+              </span>
+
+              <strong id="installedDate">
+                Sep 1, 2026
+              </strong>
+
+            </div>
+
+
+            <div class="detail-item">
+
+              <span>
+                Starting Count
+              </span>
+
+              <strong id="startingCount">
+                24,380
+              </strong>
+
+            </div>
+
+
+            <div class="detail-item">
+
+              <span>
+                Current Count
+              </span>
+
+              <strong id="currentCount">
+                25,615
+              </strong>
+
+            </div>
+
+
+            <div class="detail-item">
+
+              <span>
+                Typical Life
+              </span>
+
+              <strong id="typicalLife">
+                ~2,800
+              </strong>
+
+            </div>
+
+          </div>
+
+        </article>
+
+
+
+        <!-- PRINTER INFORMATION -->
+
+        <article class="panel">
+
+          <div class="panel-header">
+
+            <div>
+              <p class="eyebrow">
+                PRINTER
+              </p>
+
+              <h2>
+                Printer Information
+              </h2>
+            </div>
+
+          </div>
+
+
+          <div class="printer-status-box">
+
+            <div class="large-status-dot"></div>
+
+            <div>
+
+              <strong>
+                Online & Ready
+              </strong>
+
+              <span>
+                No issues detected
+              </span>
+
+            </div>
+
+          </div>
+
+
+          <div class="info-list">
+
+            <div class="info-row">
+              <span>
+                Printer
+              </span>
+
+              <strong id="printerNameInfo">
+                Printer 01
+              </strong>
+            </div>
+
+
+            <div class="info-row">
+              <span>
+                IP Address
+              </span>
+
+              <strong id="printerIp">
+                10.11.17.42
+              </strong>
+            </div>
+
+
+            <div class="info-row">
+              <span>
+                Toner
+              </span>
+
+              <strong id="tonerInfo">
+                64%
+              </strong>
+            </div>
+
+
+            <div class="info-row">
+              <span>
+                Last Updated
+              </span>
+
+              <strong id="lastUpdated">
+                --
+              </strong>
+            </div>
+
+          </div>
+
+        </article>
+
+      </section>
+
+
+
+      <!-- HISTORY -->
+
+      <section class="panel history-panel">
+
+        <div class="panel-header">
+
+          <div>
+            <p class="eyebrow">
+              HISTORY
+            </p>
+
+            <h2>
+              Cartridge History
+            </h2>
+          </div>
+
+        </div>
+
+
+        <div class="table-wrapper">
+
+          <table>
+
+            <thead>
+
+              <tr>
+                <th>Installed</th>
+                <th>Status</th>
+                <th>Pages Printed</th>
+              </tr>
+
+            </thead>
+
+            <tbody id="historyBody"></tbody>
+
+          </table>
+
+        </div>
+
+      </section>
+
+    </main>
+
+  </div>
+
+
+  <script src="app.js"></script>
 
 </body>
 </html>

@@ -4,13 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>CS Lab Printer Dashboard</title>
+  <title>Printer Health Dashboard</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
   <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
     rel="stylesheet"
   >
 
@@ -19,66 +19,59 @@
 
 <body>
 
-  <div class="app-shell">
+  <div class="background-orb orb-one"></div>
+  <div class="background-orb orb-two"></div>
 
-    <!-- TOP BAR -->
+  <main class="dashboard">
 
+    <!-- TOP -->
     <header class="topbar">
 
       <div>
-        <p class="eyebrow">CS LAB</p>
-        <h1>Printer Health Dashboard</h1>
-        <p class="subtitle">
-          Monitor printer status and cartridge usage
-        </p>
+        <span class="brand-label">CS LAB</span>
+        <h1>Printer Health</h1>
       </div>
 
-      <div class="printer-selector">
-        <span>Printer</span>
-        <strong id="printerName">Printer 01</strong>
+      <div class="updated">
+        Updated <strong id="lastUpdated">--</strong>
       </div>
 
     </header>
 
 
-    <main>
+    <!-- HERO -->
+    <section class="hero">
 
-      <!-- SUMMARY CARDS -->
+      <div class="hero-info">
 
-      <section class="summary-grid">
+        <div class="status-pill">
+          <span class="status-light"></span>
+          <span id="statusTitle">Online</span>
+        </div>
 
-        <article class="summary-card status-summary">
+        <p class="hero-label">PRINTER 01</p>
 
-          <div class="summary-icon green">
-            ●
-          </div>
+        <h2>
+          Everything looks
+          <span>good.</span>
+        </h2>
 
-          <div>
-            <span class="summary-label">
-              Printer Status
-            </span>
+        <p class="ip" id="printerIp">
+          10.11.17.42
+        </p>
 
-            <strong id="statusTitle">
-              Online
-            </strong>
-
-            <small>
-              Ready
-            </small>
-          </div>
-
-        </article>
+      </div>
 
 
-        <article class="summary-card">
+      <!-- TONER CIRCLE -->
+      <div class="toner-area">
 
-          <div class="summary-icon blue">
-            ◔
-          </div>
+        <div class="toner-ring" id="tonerRing">
 
-          <div>
-            <span class="summary-label">
-              Toner
+          <div class="toner-center">
+
+            <span class="toner-label">
+              TONER
             </span>
 
             <strong id="tonerRemaining">
@@ -86,332 +79,164 @@
             </strong>
 
             <small>
-              Remaining
+              remaining
             </small>
-          </div>
 
-        </article>
-
-
-        <article class="summary-card">
-
-          <div class="summary-icon purple">
-            ▣
-          </div>
-
-          <div>
-            <span class="summary-label">
-              Current Cartridge
-            </span>
-
-            <strong id="currentCartridgePages">
-              1,235
-            </strong>
-
-            <small>
-              Pages printed
-            </small>
-          </div>
-
-        </article>
-
-
-        <article class="summary-card">
-
-          <div class="summary-icon orange">
-            ↗
-          </div>
-
-          <div>
-            <span class="summary-label">
-              Lifetime Prints
-            </span>
-
-            <strong id="lifetimePrints">
-              25,615
-            </strong>
-
-            <small>
-              Total pages
-            </small>
-          </div>
-
-        </article>
-
-      </section>
-
-
-
-      <!-- MAIN DASHBOARD -->
-
-      <section class="dashboard-grid">
-
-
-        <!-- CARTRIDGE USAGE -->
-
-        <article class="panel">
-
-          <div class="panel-header">
-
-            <div>
-              <p class="eyebrow">
-                CURRENT CARTRIDGE
-              </p>
-
-              <h2>
-                Cartridge Usage
-              </h2>
-            </div>
-
-            <span
-              class="usage-pill"
-              id="usageBadge"
-            >
-              44% used
-            </span>
-
-          </div>
-
-
-          <div class="usage-main">
-
-            <div class="usage-number">
-
-              <strong id="pagesPrinted">
-                1,235
-              </strong>
-
-              <span>
-                pages printed
-              </span>
-
-            </div>
-
-
-            <div class="progress-area">
-
-              <div class="progress-bar">
-
-                <div
-                  class="progress-fill"
-                  id="usageBar"
-                ></div>
-
-              </div>
-
-
-              <div class="progress-labels">
-
-                <span>
-                  0
-                </span>
-
-                <span id="typicalLifeLabel">
-                  ~2,800 pages
-                </span>
-
-              </div>
-
-            </div>
-
-          </div>
-
-
-          <div class="detail-grid">
-
-            <div class="detail-item">
-
-              <span>
-                Installed
-              </span>
-
-              <strong id="installedDate">
-                Sep 1, 2026
-              </strong>
-
-            </div>
-
-
-            <div class="detail-item">
-
-              <span>
-                Starting Count
-              </span>
-
-              <strong id="startingCount">
-                24,380
-              </strong>
-
-            </div>
-
-
-            <div class="detail-item">
-
-              <span>
-                Current Count
-              </span>
-
-              <strong id="currentCount">
-                25,615
-              </strong>
-
-            </div>
-
-
-            <div class="detail-item">
-
-              <span>
-                Typical Life
-              </span>
-
-              <strong id="typicalLife">
-                ~2,800
-              </strong>
-
-            </div>
-
-          </div>
-
-        </article>
-
-
-
-        <!-- PRINTER INFORMATION -->
-
-        <article class="panel">
-
-          <div class="panel-header">
-
-            <div>
-              <p class="eyebrow">
-                PRINTER
-              </p>
-
-              <h2>
-                Printer Information
-              </h2>
-            </div>
-
-          </div>
-
-
-          <div class="printer-status-box">
-
-            <div class="large-status-dot"></div>
-
-            <div>
-
-              <strong>
-                Online & Ready
-              </strong>
-
-              <span>
-                No issues detected
-              </span>
-
-            </div>
-
-          </div>
-
-
-          <div class="info-list">
-
-            <div class="info-row">
-              <span>
-                Printer
-              </span>
-
-              <strong id="printerNameInfo">
-                Printer 01
-              </strong>
-            </div>
-
-
-            <div class="info-row">
-              <span>
-                IP Address
-              </span>
-
-              <strong id="printerIp">
-                10.11.17.42
-              </strong>
-            </div>
-
-
-            <div class="info-row">
-              <span>
-                Toner
-              </span>
-
-              <strong id="tonerInfo">
-                64%
-              </strong>
-            </div>
-
-
-            <div class="info-row">
-              <span>
-                Last Updated
-              </span>
-
-              <strong id="lastUpdated">
-                --
-              </strong>
-            </div>
-
-          </div>
-
-        </article>
-
-      </section>
-
-
-
-      <!-- HISTORY -->
-
-      <section class="panel history-panel">
-
-        <div class="panel-header">
-
-          <div>
-            <p class="eyebrow">
-              HISTORY
-            </p>
-
-            <h2>
-              Cartridge History
-            </h2>
           </div>
 
         </div>
 
+      </div>
 
-        <div class="table-wrapper">
+    </section>
 
-          <table>
 
-            <thead>
+    <!-- QUICK NUMBERS -->
+    <section class="quick-grid">
 
-              <tr>
-                <th>Installed</th>
-                <th>Status</th>
-                <th>Pages Printed</th>
-              </tr>
+      <article class="quick-card purple-card">
 
-            </thead>
-
-            <tbody id="historyBody"></tbody>
-
-          </table>
-
+        <div class="quick-icon">
+          ↗
         </div>
 
-      </section>
+        <div>
+          <span>Lifetime</span>
 
-    </main>
+          <strong id="lifetimePrints">
+            25,615
+          </strong>
 
-  </div>
+          <small>prints</small>
+        </div>
 
+      </article>
+
+
+      <article class="quick-card blue-card">
+
+        <div class="quick-icon">
+          ◫
+        </div>
+
+        <div>
+          <span>Current cartridge</span>
+
+          <strong id="pagesPrinted">
+            1,235
+          </strong>
+
+          <small>pages</small>
+        </div>
+
+      </article>
+
+
+      <article class="quick-card peach-card">
+
+        <div class="quick-icon">
+          ◌
+        </div>
+
+        <div>
+          <span>Typical life</span>
+
+          <strong id="typicalLife">
+            2,800
+          </strong>
+
+          <small>pages</small>
+        </div>
+
+      </article>
+
+    </section>
+
+
+    <!-- CARTRIDGE -->
+    <section class="cartridge-panel">
+
+      <div class="cartridge-top">
+
+        <div>
+          <span class="section-label">
+            CURRENT CARTRIDGE
+          </span>
+
+          <h3>
+            Usage
+          </h3>
+        </div>
+
+        <div class="usage-percent" id="usagePercent">
+          44%
+        </div>
+
+      </div>
+
+
+      <div class="usage-track">
+
+        <div
+          class="usage-fill"
+          id="usageBar">
+        </div>
+
+      </div>
+
+
+      <div class="usage-bottom">
+
+        <div>
+          <span>Installed</span>
+          <strong id="installedDate">
+            Sep 1
+          </strong>
+        </div>
+
+        <div>
+          <span>Used</span>
+          <strong id="usedPages">
+            1,235 pages
+          </strong>
+        </div>
+
+        <div>
+          <span>Typical</span>
+          <strong id="typicalLifeBottom">
+            ~2,800 pages
+          </strong>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- HISTORY -->
+    <section class="history">
+
+      <div class="history-heading">
+        <div>
+          <span class="section-label">
+            RECENT
+          </span>
+
+          <h3>
+            Cartridge history
+          </h3>
+        </div>
+      </div>
+
+
+      <div
+        class="history-list"
+        id="historyList">
+      </div>
+
+    </section>
+
+  </main>
 
   <script src="app.js"></script>
 

@@ -2,7 +2,9 @@
   box-sizing: border-box;
 }
 
+
 :root {
+
   --background: #f4f7fc;
 
   --text: #111936;
@@ -21,7 +23,9 @@
   --red-light: #fff0f0;
 
   --line: #e0e5ef;
+
 }
+
 
 
 /* =========================================================
@@ -29,35 +33,54 @@
 ========================================================= */
 
 body {
+
   margin: 0;
+
   min-height: 100vh;
 
-  font-family: "Inter", system-ui, sans-serif;
+  font-family:
+    "Inter",
+    system-ui,
+    sans-serif;
 
   color: var(--text);
 
   background:
+
     radial-gradient(
       circle at top left,
       #edf4ff 0,
       transparent 35%
     ),
+
     radial-gradient(
       circle at bottom right,
       #effbf7 0,
       transparent 35%
     ),
+
     var(--background);
+
 }
+
 
 
 .dashboard {
-  width: min(1050px, calc(100% - 30px));
 
-  margin: 0 auto;
+  width:
+    min(
+      1050px,
+      calc(100% - 30px)
+    );
 
-  padding: 25px 0 60px;
+  margin:
+    0 auto;
+
+  padding:
+    25px 0 60px;
+
 }
+
 
 
 /* =========================================================
@@ -65,70 +88,104 @@ body {
 ========================================================= */
 
 .dashboard-header {
+
   display: flex;
+
   align-items: center;
-  justify-content: space-between;
+
+  justify-content:
+    space-between;
 
   margin-bottom: 18px;
+
 }
 
+
 .header-title {
+
   display: flex;
+
   align-items: baseline;
 
   gap: 18px;
+
 }
 
+
 .header-title h1 {
+
   margin: 0;
 
   font-size: 29px;
+
   font-weight: 700;
 
   letter-spacing: -1px;
+
 }
+
 
 .header-title span {
-  color: var(--secondary);
+
+  color:
+    var(--secondary);
 
   font-size: 15px;
+
 }
 
+
 .header-update {
+
   display: flex;
+
   align-items: center;
 
   gap: 7px;
 
-  color: var(--secondary);
+  color:
+    var(--secondary);
 
   font-size: 12px;
+
 }
+
 
 .header-update strong {
-  color: var(--text);
+
+  color:
+    var(--text);
+
 }
 
+
 .refresh-button {
+
   width: 34px;
+
   height: 34px;
 
   margin-left: 8px;
 
   border: 0;
+
   border-radius: 10px;
 
   background: white;
 
-  color: var(--text);
+  color:
+    var(--text);
 
   font-size: 22px;
 
   box-shadow:
-    0 4px 14px rgba(36, 44, 80, 0.08);
+    0 4px 14px
+    rgba(36, 44, 80, 0.08);
 
   cursor: pointer;
+
 }
+
 
 
 /* =========================================================
@@ -136,11 +193,15 @@ body {
 ========================================================= */
 
 .printer-list {
+
   display: flex;
+
   flex-direction: column;
 
   gap: 12px;
+
 }
+
 
 
 /* =========================================================
@@ -148,130 +209,201 @@ body {
 ========================================================= */
 
 .printer-card {
+
   overflow: hidden;
 
-  border: 1px solid rgba(213, 219, 234, 0.85);
+  border:
+    1px solid
+    rgba(213, 219, 234, 0.85);
 
   border-radius: 19px;
 
-  background: rgba(255, 255, 255, 0.93);
+  background:
+    rgba(255, 255, 255, 0.93);
 
   box-shadow:
-    0 8px 25px rgba(37, 47, 82, 0.05);
+    0 8px 25px
+    rgba(37, 47, 82, 0.05);
 
   transition:
     box-shadow 0.25s ease,
     transform 0.25s ease;
+
 }
 
+
 .printer-card:hover {
+
   box-shadow:
-    0 12px 32px rgba(37, 47, 82, 0.08);
+    0 12px 32px
+    rgba(37, 47, 82, 0.08);
+
 }
+
 
 
 /* =========================================================
    MAIN PRINTER ROW
 
-   STATUS | PRINTER GRAPHIC | NAME |
-   TRAY GRAPHIC | TRAY STATUS | CARTRIDGE | ARROW
+   STATUS
+   PRINTER GRAPHIC
+   NAME
+   CARTRIDGE
+   PAPER TRAY
+   ARROW
 ========================================================= */
 
 .printer-overview {
-  min-height: 132px;
+
+  min-height: 138px;
 
   display: grid;
 
   grid-template-columns:
-    125px
-    95px
-    minmax(310px, 1fr)
-    55px
-    165px
-    130px
+
+    112px
+
+    84px
+
+    minmax(
+      255px,
+      1fr
+    )
+
+    122px
+
+    155px
+
     38px;
 
   align-items: center;
 
-  gap: 14px;
+  gap: 12px;
 
-  padding: 15px 22px;
+  padding:
+    10px 18px;
+
 }
+
 
 
 /* =========================================================
-   STATUS
+   CONNECTION STATUS
 ========================================================= */
 
 .status-column {
+
   display: flex;
+
   align-items: center;
-  justify-content: flex-start;
+
+  justify-content:
+    flex-start;
+
 }
 
+
 .connection-status {
-  min-width: 112px;
+
+  min-width: 105px;
 
   display: flex;
+
   align-items: center;
 
-  gap: 9px;
+  gap: 8px;
 
-  padding: 11px 13px;
+  padding:
+    11px 12px;
 
   border-radius: 13px;
 
   font-size: 13px;
+
   font-weight: 650;
+
 }
 
+
 .status-dot {
+
   width: 13px;
+
   height: 13px;
 
   border-radius: 50%;
 
   flex-shrink: 0;
+
 }
+
 
 
 /* ONLINE */
 
 .connection-status.online {
+
   color: #087e5b;
 
-  background: var(--green-light);
+  background:
+    var(--green-light);
+
 }
 
-.connection-status.online .status-dot {
-  background: var(--green);
+
+.connection-status.online
+.status-dot {
+
+  background:
+    var(--green);
+
 }
+
 
 
 /* SLEEP */
 
 .connection-status.sleep {
+
   color: #596170;
 
-  background: var(--gray-light);
+  background:
+    var(--gray-light);
+
 }
 
-.connection-status.sleep .status-dot {
-  background: var(--gray);
+
+.connection-status.sleep
+.status-dot {
+
+  background:
+    var(--gray);
+
 }
+
 
 
 /* OFFLINE */
 
 .connection-status.offline {
-  color: var(--red-dark);
 
-  background: var(--red-light);
+  color:
+    var(--red-dark);
+
+  background:
+    var(--red-light);
+
 }
 
-.connection-status.offline .status-dot {
-  background: var(--red);
+
+.connection-status.offline
+.status-dot {
+
+  background:
+    var(--red);
+
 }
+
 
 
 /* =========================================================
@@ -279,57 +411,78 @@ body {
 ========================================================= */
 
 .graphic-column {
+
   display: flex;
+
   align-items: center;
+
   justify-content: center;
+
 }
+
 
 
 /* =========================================================
-   CSS PRINTER GRAPHIC
+   PRINTER GRAPHIC
 ========================================================= */
 
 .printer-graphic {
+
   position: relative;
 
   width: 84px;
+
   height: 60px;
 
   flex-shrink: 0;
+
 }
 
+
 .printer-paper {
+
   position: absolute;
 
   top: 0;
+
   left: 23px;
 
   width: 38px;
+
   height: 24px;
 
-  border: 1px solid #d8dce5;
+  border:
+    1px solid #d8dce5;
+
   border-radius: 2px;
 
   background:
+
     linear-gradient(
       180deg,
       #ffffff,
       #eef1f6
     );
+
 }
 
+
 .printer-body {
+
   position: absolute;
 
   top: 18px;
+
   left: 6px;
 
   width: 72px;
+
   height: 33px;
 
   border-radius: 7px;
 
   background:
+
     linear-gradient(
       180deg,
       #e8ecf2,
@@ -337,65 +490,99 @@ body {
     );
 
   box-shadow:
-    0 5px 8px rgba(31, 40, 65, 0.14);
+    0 5px 8px
+    rgba(31, 40, 65, 0.14);
+
 }
 
 
-/* Small printer status light */
+
+/* Printer status light */
 
 .printer-display {
+
   position: absolute;
 
   top: 6px;
+
   right: 8px;
 
   width: 14px;
+
   height: 4px;
 
   border-radius: 2px;
+
 }
 
-.printer-graphic.online .printer-display {
-  background: var(--green);
+
+.printer-graphic.online
+.printer-display {
+
+  background:
+    var(--green);
+
 }
 
-.printer-graphic.sleep .printer-display {
-  background: var(--gray);
+
+.printer-graphic.sleep
+.printer-display {
+
+  background:
+    var(--gray);
+
 }
 
-.printer-graphic.offline .printer-display {
-  background: var(--red);
+
+.printer-graphic.offline
+.printer-display {
+
+  background:
+    var(--red);
+
 }
+
 
 .printer-slot {
+
   position: absolute;
 
   left: 14px;
+
   bottom: 4px;
 
   width: 44px;
+
   height: 15px;
 
-  border-radius: 2px 2px 4px 4px;
+  border-radius:
+    2px 2px 4px 4px;
 
   background:
+
     linear-gradient(
       180deg,
       #28313e,
       #111721
     );
+
 }
 
+
 .printer-output {
+
   position: absolute;
 
   left: 24px;
+
   bottom: 0;
 
   width: 38px;
+
   height: 13px;
 
   background:
+
     linear-gradient(
       180deg,
       #ffffff,
@@ -403,8 +590,11 @@ body {
     );
 
   box-shadow:
-    0 2px 4px rgba(0, 0, 0, 0.1);
+    0 2px 4px
+    rgba(0, 0, 0, 0.1);
+
 }
+
 
 
 /* =========================================================
@@ -412,188 +602,30 @@ body {
 ========================================================= */
 
 .printer-text {
+
   min-width: 0;
 
   display: flex;
+
   align-items: center;
+
 }
 
+
 .printer-text h2 {
+
   margin: 0;
 
   font-size: 16px;
+
   font-weight: 700;
 
   letter-spacing: -0.25px;
 
   white-space: nowrap;
+
 }
 
-
-/* =========================================================
-   PAPER TRAY GRAPHIC COLUMN
-========================================================= */
-
-.tray-icon-column {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  gap: 6px;
-}
-
-
-/* =========================================================
-   PAPER TRAY GRAPHIC
-
-   Neutral gray like the printer.
-   The graphic itself is NOT color coded.
-========================================================= */
-
-.paper-icon {
-  position: relative;
-
-  width: 44px;
-  height: 38px;
-
-  flex-shrink: 0;
-}
-
-
-/* Back sheet */
-
-.paper-icon::before {
-  content: "";
-
-  position: absolute;
-
-  top: 1px;
-  left: 11px;
-
-  width: 25px;
-  height: 25px;
-
-  border: 1px solid #d4dae3;
-  border-radius: 3px;
-
-  background:
-    linear-gradient(
-      180deg,
-      #ffffff,
-      #edf1f5
-    );
-
-  box-shadow:
-    0 2px 4px rgba(31, 40, 65, 0.07);
-}
-
-
-/* Tray body */
-
-.paper-icon::after {
-  content: "";
-
-  position: absolute;
-
-  left: 3px;
-  bottom: 1px;
-
-  width: 38px;
-  height: 16px;
-
-  border-radius: 4px 4px 7px 7px;
-
-  background:
-    linear-gradient(
-      180deg,
-      #d9dee6,
-      #adb6c2
-    );
-
-  box-shadow:
-    0 3px 6px rgba(31, 40, 65, 0.14);
-}
-
-
-/* =========================================================
-   SMALL PAPER TRAY STATUS LIGHT
-
-   This is the only colored part of the tray graphic.
-========================================================= */
-
-.tray-status-light {
-  width: 10px;
-  height: 4px;
-
-  flex-shrink: 0;
-
-  border-radius: 2px;
-}
-
-.tray-status-light.full {
-  background: var(--green);
-}
-
-.tray-status-light.low {
-  background: var(--gray);
-}
-
-.tray-status-light.empty {
-  background: var(--red);
-}
-
-
-/* =========================================================
-   PAPER TRAY STATUS
-========================================================= */
-
-.paper-column {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-}
-
-.paper-status {
-  min-width: 85px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  padding: 10px 14px;
-
-  border-radius: 13px;
-
-  font-size: 12px;
-  font-weight: 650;
-}
-
-
-/* FULL */
-
-.paper-status.full {
-  color: #07805c;
-
-  background: var(--green-light);
-}
-
-
-/* LOW */
-
-.paper-status.low {
-  color: var(--gray-dark);
-
-  background: var(--gray-light);
-}
-
-
-/* EMPTY */
-
-.paper-status.empty {
-  color: var(--red-dark);
-
-  background: var(--red-light);
-}
 
 
 /* =========================================================
@@ -601,80 +633,212 @@ body {
 ========================================================= */
 
 .cartridge-area {
-  height: 100%;
 
   display: flex;
-  align-items: center;
-  justify-content: flex-end;
 
-  padding-left: 14px;
+  align-items: center;
+
+  justify-content: center;
+
 }
 
+
+
+/* NO DIVIDER HERE */
+
 .cartridge-ring {
+
   --percentage: 50;
 
   position: relative;
 
   width: 118px;
+
   height: 118px;
 
   flex-shrink: 0;
 
   display: flex;
+
   align-items: center;
+
   justify-content: center;
 
   border-radius: 50%;
 
   background:
-    conic-gradient(
-      var(--ring-color)
-      calc(var(--percentage) * 1%),
 
-      #e0e5eb
-      0
+    conic-gradient(
+
+      var(--ring-color)
+
+      calc(
+        var(--percentage) * 1%
+      ),
+
+      #e0e5eb 0
+
     );
+
 }
 
+
 .cartridge-ring::before {
+
   content: "";
 
   position: absolute;
 
   width: 91px;
+
   height: 91px;
 
   border-radius: 50%;
 
   background: white;
+
 }
 
+
 .cartridge-content {
+
   position: relative;
+
   z-index: 2;
 
   text-align: center;
+
 }
 
+
 .cartridge-content strong {
+
   display: block;
 
   font-size: 20px;
+
   line-height: 1;
+
 }
 
+
 .cartridge-content span {
+
   display: block;
 
   max-width: 66px;
 
   margin-top: 5px;
 
-  color: var(--secondary);
+  color:
+    var(--secondary);
 
   font-size: 8px;
+
   line-height: 1.15;
+
 }
+
+
+
+/* =========================================================
+   PAPER TRAY
+
+   "Paper Tray:" stays neutral.
+
+   Only Full / Low / Empty is color coded.
+========================================================= */
+
+.paper-column {
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content:
+    flex-start;
+
+  gap: 7px;
+
+  white-space: nowrap;
+
+}
+
+
+.paper-label {
+
+  color:
+    var(--secondary);
+
+  font-size: 12px;
+
+  font-weight: 500;
+
+}
+
+
+.paper-status {
+
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  min-width: 48px;
+
+  padding:
+    7px 9px;
+
+  border-radius: 10px;
+
+  font-size: 12px;
+
+  font-weight: 700;
+
+}
+
+
+
+/* FULL */
+
+.paper-status.full {
+
+  color: #07805c;
+
+  background:
+    var(--green-light);
+
+}
+
+
+
+/* LOW */
+
+.paper-status.low {
+
+  color:
+    var(--gray-dark);
+
+  background:
+    var(--gray-light);
+
+}
+
+
+
+/* EMPTY */
+
+.paper-status.empty {
+
+  color:
+    var(--red-dark);
+
+  background:
+    var(--red-light);
+
+}
+
 
 
 /* =========================================================
@@ -682,38 +846,62 @@ body {
 ========================================================= */
 
 .expand-button {
+
   width: 38px;
+
   height: 38px;
 
   display: flex;
+
   align-items: center;
+
   justify-content: center;
 
   border: 0;
+
   border-radius: 50%;
 
   background: transparent;
 
-  color: var(--text);
+  color:
+    var(--text);
 
   cursor: pointer;
+
 }
+
 
 .chevron {
+
   width: 12px;
+
   height: 12px;
 
-  border-right: 3px solid currentColor;
-  border-bottom: 3px solid currentColor;
+  border-right:
+    3px solid
+    currentColor;
 
-  transform: rotate(45deg);
+  border-bottom:
+    3px solid
+    currentColor;
 
-  transition: transform 0.25s ease;
+  transform:
+    rotate(45deg);
+
+  transition:
+    transform 0.25s ease;
+
 }
 
-.expand-button.open .chevron {
-  transform: rotate(225deg);
+
+.expand-button.open
+.chevron {
+
+  transform:
+    rotate(225deg);
+
 }
+
 
 
 /* =========================================================
@@ -721,54 +909,80 @@ body {
 ========================================================= */
 
 .analytics-wrapper {
+
   display: grid;
 
   grid-template-rows: 0fr;
 
   transition:
-    grid-template-rows 0.35s ease;
+    grid-template-rows
+    0.35s ease;
+
 }
+
 
 .analytics-wrapper.open {
+
   grid-template-rows: 1fr;
+
 }
+
 
 .analytics-overflow {
+
   overflow: hidden;
+
 }
 
+
 .analytics {
-  margin: 0 14px 14px;
 
-  padding: 18px 24px 20px;
+  margin:
+    0 14px 14px;
 
-  border: 1px solid #caeadc;
+  padding:
+    18px 24px 20px;
+
+  border:
+    1px solid #caeadc;
 
   border-radius: 16px;
 
   background:
+
     linear-gradient(
       120deg,
       #f1fbf7,
       #fbfefd
     );
+
 }
+
 
 .analytics h3 {
-  margin: 0 0 4px;
+
+  margin:
+    0 0 4px;
 
   font-size: 17px;
+
 }
+
 
 .analytics-subtitle {
+
   margin: 0;
 
-  color: var(--secondary);
+  color:
+    var(--secondary);
 
   font-size: 12px;
+
 }
 
+
 .analytics-content {
+
   display: grid;
 
   grid-template-columns:
@@ -778,7 +992,9 @@ body {
   gap: 30px;
 
   margin-top: 17px;
+
 }
+
 
 
 /* =========================================================
@@ -786,19 +1002,26 @@ body {
 ========================================================= */
 
 .graph-area {
+
   min-width: 0;
 
   padding-right: 28px;
 
-  border-right: 1px solid var(--line);
+  border-right:
+    1px solid
+    var(--line);
+
 }
 
+
 .graph {
+
   position: relative;
 
   height: 200px;
 
   display: flex;
+
   align-items: flex-end;
 
   gap: 28px;
@@ -809,60 +1032,94 @@ body {
     0
     45px;
 
-  border-bottom: 1px solid #bfc7d7;
+  border-bottom:
+    1px solid #bfc7d7;
+
 }
 
+
 .graph-y-label {
+
   position: absolute;
 
   left: 0;
 
-  color: var(--secondary);
+  color:
+    var(--secondary);
 
   font-size: 9px;
+
 }
+
 
 .y-3000 {
+
   top: 12px;
+
 }
+
 
 .y-2000 {
+
   top: 70px;
+
 }
+
 
 .y-1000 {
+
   top: 128px;
+
 }
+
 
 .y-0 {
+
   bottom: -4px;
+
 }
 
+
 .graph-line {
+
   position: absolute;
 
   left: 45px;
+
   right: 0;
 
   height: 1px;
 
   background: #e3ece8;
+
 }
+
 
 .line-3000 {
+
   top: 20px;
+
 }
+
 
 .line-2000 {
+
   top: 78px;
+
 }
+
 
 .line-1000 {
+
   top: 136px;
+
 }
 
+
 .graph-column {
+
   position: relative;
+
   z-index: 2;
 
   flex: 1;
@@ -870,62 +1127,93 @@ body {
   height: 175px;
 
   display: flex;
+
   flex-direction: column;
+
   justify-content: flex-end;
+
   align-items: center;
+
 }
 
+
 .graph-value {
+
   margin-bottom: 6px;
 
   font-size: 11px;
+
   font-weight: 700;
+
 }
 
+
 .graph-bar {
-  width: min(72px, 70%);
+
+  width:
+    min(
+      72px,
+      70%
+    );
 
   min-height: 5px;
 
-  border-radius: 5px 5px 0 0;
+  border-radius:
+    5px 5px 0 0;
 
   background:
+
     linear-gradient(
       180deg,
       #25c98f,
       #0da975
     );
+
 }
 
+
 .graph-bar.current {
+
   background:
+
     linear-gradient(
       180deg,
       #a7e5c8,
       #70d2a4
     );
+
 }
 
+
 .graph-label {
+
   min-height: 35px;
 
   margin-top: 8px;
 
-  color: var(--secondary);
+  color:
+    var(--secondary);
 
   font-size: 9px;
+
   line-height: 1.35;
 
   text-align: center;
+
 }
+
 
 .graph-label strong {
+
   display: block;
 
-  color: var(--text);
+  color:
+    var(--text);
 
   font-size: 9px;
+
 }
+
 
 
 /* =========================================================
@@ -933,63 +1221,94 @@ body {
 ========================================================= */
 
 .analytics-summary {
+
   display: flex;
+
   flex-direction: column;
 
   justify-content: center;
 
   gap: 23px;
+
 }
 
+
 .summary-item {
+
   display: flex;
+
   align-items: center;
 
   gap: 14px;
+
 }
 
+
 .summary-icon {
+
   width: 37px;
+
   height: 37px;
 
   display: flex;
+
   align-items: center;
+
   justify-content: center;
 
   border-radius: 10px;
 
   background: white;
 
-  color: var(--green-dark);
+  color:
+    var(--green-dark);
 
   font-size: 18px;
 
   box-shadow:
-    0 3px 10px rgba(42, 48, 86, 0.06);
+    0 3px 10px
+    rgba(42, 48, 86, 0.06);
+
 }
 
+
 .summary-text {
+
   display: flex;
+
   flex-direction: column;
 
   gap: 3px;
+
 }
+
 
 .summary-text span {
-  color: var(--secondary);
+
+  color:
+    var(--secondary);
 
   font-size: 10px;
+
 }
+
 
 .summary-text strong {
+
   font-size: 14px;
+
 }
+
 
 .summary-text small {
-  color: var(--secondary);
+
+  color:
+    var(--secondary);
 
   font-size: 8px;
+
 }
+
 
 
 /* =========================================================
@@ -999,57 +1318,103 @@ body {
 @media (max-width: 900px) {
 
   .dashboard {
-    width: calc(100% - 20px);
+
+    width:
+      calc(100% - 20px);
+
   }
 
+
   .printer-overview {
+
     grid-template-columns:
-      125px
-      95px
-      minmax(310px, 1fr)
-      55px
-      165px
-      130px
-      38px;
+
+      105px
+
+      80px
+
+      minmax(
+        230px,
+        1fr
+      )
+
+      100px
+
+      140px
+
+      34px;
 
     gap: 8px;
 
     padding-left: 12px;
+
     padding-right: 12px;
+
   }
+
 
   .printer-text h2 {
+
     font-size: 14px;
+
   }
+
 
   .connection-status {
-    min-width: 105px;
+
+    min-width: 98px;
 
     padding:
-      10px
-      10px;
+      10px 9px;
+
   }
 
-  .paper-status {
-    min-width: 80px;
-
-    padding:
-      10px
-      10px;
-
-    font-size: 11px;
-  }
 
   .cartridge-ring {
+
     width: 95px;
+
     height: 95px;
+
   }
 
+
   .cartridge-ring::before {
+
     width: 73px;
+
     height: 73px;
+
   }
+
+
+  .paper-column {
+
+    gap: 5px;
+
+  }
+
+
+  .paper-label {
+
+    font-size: 11px;
+
+  }
+
+
+  .paper-status {
+
+    min-width: 43px;
+
+    padding:
+      6px 7px;
+
+    font-size: 11px;
+
+  }
+
 }
+
 
 
 /* =========================================================
@@ -1059,86 +1424,137 @@ body {
 @media (max-width: 650px) {
 
   .dashboard-header {
-    align-items: flex-start;
+
+    align-items:
+      flex-start;
 
     gap: 12px;
+
   }
+
 
   .header-title {
-    flex-direction: column;
+
+    flex-direction:
+      column;
 
     gap: 2px;
+
   }
 
+
   .printer-overview {
+
     grid-template-columns:
+
       1fr
-      100px
+
+      105px
+
       35px;
 
     gap: 12px;
+
   }
+
 
   .status-column {
+
     grid-column: 1;
+
     grid-row: 1;
+
   }
+
 
   .graphic-column {
+
     grid-column: 1;
+
     grid-row: 2;
 
-    justify-content: flex-start;
+    justify-content:
+      flex-start;
+
   }
+
 
   .printer-text {
-    grid-column: 1 / 3;
+
+    grid-column:
+      1 / 4;
+
     grid-row: 3;
+
   }
+
 
   .printer-text h2 {
+
     white-space: normal;
+
   }
 
-  .tray-icon-column {
-    grid-column: 1;
-    grid-row: 4;
-
-    justify-content: flex-start;
-  }
-
-  .paper-column {
-    grid-column: 1 / 3;
-    grid-row: 5;
-  }
 
   .cartridge-area {
-    grid-column: 2;
-    grid-row: 1 / 3;
 
-    padding-left: 0;
+    grid-column: 2;
+
+    grid-row:
+      1 / 3;
+
   }
+
+
+  .paper-column {
+
+    grid-column:
+      1 / 3;
+
+    grid-row: 4;
+
+  }
+
 
   .expand-button {
+
     grid-column: 3;
+
     grid-row: 1;
+
   }
+
 
   .analytics-content {
-    grid-template-columns: 1fr;
+
+    grid-template-columns:
+      1fr;
+
   }
 
+
   .graph-area {
+
     padding-right: 0;
+
     padding-bottom: 20px;
 
     border-right: 0;
-    border-bottom: 1px solid var(--line);
+
+    border-bottom:
+      1px solid
+      var(--line);
+
   }
+
 
   .analytics-summary {
+
     display: grid;
 
-    grid-template-columns: 1fr;
+    grid-template-columns:
+      1fr;
+
   }
+
 }

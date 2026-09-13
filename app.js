@@ -234,14 +234,14 @@ function getStatusLabel(status) {
 function getPaperLabel(status) {
 
   if (status === "full") {
-    return "Paper Tray: Full";
+    return "Full";
   }
 
   if (status === "low") {
-    return "Paper Tray: Low";
+    return "Low";
   }
 
-  return "Paper Tray: Empty";
+  return "Empty";
 }
 
 

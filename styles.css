@@ -55,7 +55,7 @@ body {
   Wider than before because the real printer names are long.
 */
 .dashboard {
-  width: min(1150px, calc(100% - 30px));
+  width: min(1050px, calc(100% - 30px));
   margin: 0 auto;
   padding: 25px 0 60px;
 }

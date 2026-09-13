@@ -1,33 +1,30 @@
-/* =========================================================
-   GENERAL
-========================================================= */
-
 * {
   box-sizing: border-box;
 }
 
 :root {
   --background: #f4f7fc;
+
   --text: #111936;
-  --secondary: #536080;
+  --secondary: #59647e;
 
   --green: #12b981;
-  --green-light: #e9faf4;
+  --green-dark: #07956a;
+  --green-light: #e8faf3;
 
-  --green: #12b981;
-  --green-light: #e9faf4;
-
-  --blue: #278fea;
-  --blue-light: #e9f4ff;
-
-  --yellow: #f5b51b;
-  --yellow-light: #fff7dc;
+  --gray: #929baa;
+  --gray-light: #f0f2f5;
 
   --red: #e93434;
   --red-light: #fff0f0;
 
   --line: #e0e5ef;
 }
+
+
+/* =========================================================
+   PAGE
+========================================================= */
 
 body {
   margin: 0;
@@ -40,12 +37,12 @@ body {
   background:
     radial-gradient(
       circle at top left,
-      #edf0ff 0,
+      #edf4ff 0,
       transparent 35%
     ),
     radial-gradient(
       circle at bottom right,
-      #eef8ff 0,
+      #effbf7 0,
       transparent 35%
     ),
     var(--background);
@@ -54,6 +51,7 @@ body {
 .dashboard {
   width: min(1180px, calc(100% - 40px));
   margin: 0 auto;
+
   padding: 25px 0 60px;
 }
 
@@ -73,6 +71,7 @@ body {
 .header-title {
   display: flex;
   align-items: baseline;
+
   gap: 18px;
 }
 
@@ -86,15 +85,18 @@ body {
 
 .header-title span {
   color: var(--secondary);
+
   font-size: 15px;
 }
 
 .header-update {
   display: flex;
   align-items: center;
+
   gap: 7px;
 
   color: var(--secondary);
+
   font-size: 12px;
 }
 
@@ -114,9 +116,11 @@ body {
   background: white;
 
   color: var(--text);
+
   font-size: 22px;
 
-  box-shadow: 0 4px 14px rgba(36, 44, 80, 0.08);
+  box-shadow:
+    0 4px 14px rgba(36, 44, 80, 0.08);
 
   cursor: pointer;
 }
@@ -129,21 +133,24 @@ body {
 .printer-list {
   display: flex;
   flex-direction: column;
+
   gap: 12px;
 }
 
 
 /* =========================================================
-   PRINTER CARD
+   CARD
 ========================================================= */
 
 .printer-card {
   overflow: hidden;
 
-  border: 1px solid rgba(213, 219, 234, 0.8);
+  border: 1px solid rgba(213, 219, 234, 0.85);
+
   border-radius: 19px;
 
-  background: rgba(255, 255, 255, 0.88);
+  background:
+    rgba(255, 255, 255, 0.9);
 
   box-shadow:
     0 8px 25px rgba(37, 47, 82, 0.05);
@@ -159,88 +166,58 @@ body {
 }
 
 
-/* subtle status tint */
-
-.printer-card.sleep-card {
-  background:
-    linear-gradient(
-      90deg,
-      rgba(255,255,255,.95),
-      rgba(235,246,255,.75)
-    );
-}
-
-.printer-card.warning-card {
-  background:
-    linear-gradient(
-      90deg,
-      rgba(255,255,255,.95),
-      rgba(255,248,226,.72)
-    );
-}
-
-.printer-card.offline-card {
-  background:
-    linear-gradient(
-      90deg,
-      rgba(255,255,255,.95),
-      rgba(255,237,237,.72)
-    );
-}
-
-
 /* =========================================================
-   COLLAPSED PRINTER ROW
+   COLLAPSED ROW
 ========================================================= */
 
 .printer-overview {
-  min-height: 128px;
+  min-height: 112px;
 
   display: grid;
 
   grid-template-columns:
-    240px
-    1fr
-    180px
-    50px;
+    250px
+    150px
+    260px
+    170px
+    45px;
 
   align-items: center;
 
-  gap: 25px;
+  gap: 18px;
 
-  padding: 15px 24px;
+  padding: 14px 22px;
 }
 
 
 /* =========================================================
-   LEFT SIDE
+   PRINTER IDENTITY
 ========================================================= */
 
 .printer-identity {
   height: 100%;
 
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  align-items: center;
 
-  padding-right: 20px;
+  gap: 18px;
+
+  padding-right: 18px;
 
   border-right: 1px solid var(--line);
 }
 
-.printer-identity h2 {
-  margin: 0 0 3px;
+.printer-text {
+  min-width: 0;
+}
+
+.printer-text h2 {
+  margin: 0;
 
   font-size: 18px;
   font-weight: 700;
+
   letter-spacing: -0.4px;
-}
-
-.printer-location {
-  margin-bottom: 8px;
-
-  color: var(--secondary);
-  font-size: 11px;
 }
 
 
@@ -251,24 +228,20 @@ body {
 .printer-graphic {
   position: relative;
 
-  width: 82px;
-  height: 55px;
+  width: 84px;
+  height: 60px;
 
-  margin-top: 3px;
-  margin-left: 12px;
+  flex-shrink: 0;
 }
-
-
-/* paper */
 
 .printer-paper {
   position: absolute;
 
   top: 0;
-  left: 22px;
+  left: 23px;
 
   width: 38px;
-  height: 22px;
+  height: 24px;
 
   border: 1px solid #d8dce5;
   border-radius: 2px;
@@ -279,22 +252,16 @@ body {
       #ffffff,
       #eef1f6
     );
-
-  box-shadow:
-    0 2px 5px rgba(0,0,0,.04);
 }
-
-
-/* printer body */
 
 .printer-body {
   position: absolute;
 
-  top: 17px;
+  top: 18px;
   left: 6px;
 
-  width: 70px;
-  height: 31px;
+  width: 72px;
+  height: 33px;
 
   border-radius: 7px;
 
@@ -302,15 +269,12 @@ body {
     linear-gradient(
       180deg,
       #e8ecf2,
-      #bfc6d0
+      #bdc5d0
     );
 
   box-shadow:
-    0 5px 8px rgba(31, 40, 65, .14);
+    0 5px 8px rgba(31, 40, 65, 0.14);
 }
-
-
-/* little display */
 
 .printer-display {
   position: absolute;
@@ -318,16 +282,13 @@ body {
   top: 6px;
   right: 8px;
 
-  width: 13px;
+  width: 14px;
   height: 4px;
 
   border-radius: 2px;
 
-  background: #606979;
+  background: var(--green);
 }
-
-
-/* dark output slot */
 
 .printer-slot {
   position: absolute;
@@ -335,8 +296,8 @@ body {
   left: 14px;
   bottom: 4px;
 
-  width: 42px;
-  height: 14px;
+  width: 44px;
+  height: 15px;
 
   border-radius: 2px 2px 4px 4px;
 
@@ -348,19 +309,14 @@ body {
     );
 }
 
-
-/* output paper */
-
 .printer-output {
   position: absolute;
 
-  left: 23px;
+  left: 24px;
   bottom: 0;
 
-  width: 37px;
+  width: 38px;
   height: 13px;
-
-  border-radius: 1px;
 
   background:
     linear-gradient(
@@ -370,57 +326,74 @@ body {
     );
 
   box-shadow:
-    0 2px 4px rgba(0,0,0,.1);
+    0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 
 /* =========================================================
-   CENTER STATUS
+   PRINTER STATUS
 ========================================================= */
 
-.printer-condition {
+.status-column {
   display: flex;
-  flex-direction: column;
-  gap: 11px;
+  justify-content: center;
 }
 
-
-/* online / sleep / offline */
-
 .connection-status {
+  min-width: 115px;
+
   display: flex;
   align-items: center;
-  gap: 9px;
 
-  font-size: 14px;
+  gap: 10px;
+
+  padding: 11px 14px;
+
+  border-radius: 13px;
+
+  font-size: 13px;
   font-weight: 650;
 }
 
 .status-dot {
-  width: 12px;
-  height: 12px;
+  width: 14px;
+  height: 14px;
 
   border-radius: 50%;
+
+  flex-shrink: 0;
 }
+
+
+/* ONLINE */
 
 .connection-status.online {
   color: #087e5b;
+  background: var(--green-light);
 }
 
 .connection-status.online .status-dot {
   background: var(--green);
 }
 
+
+/* SLEEP */
+
 .connection-status.sleep {
-  color: #246fae;
+  color: #596170;
+  background: var(--gray-light);
 }
 
 .connection-status.sleep .status-dot {
-  background: var(--blue);
+  background: var(--gray);
 }
 
+
+/* OFFLINE */
+
 .connection-status.offline {
-  color: var(--red);
+  color: #cb2929;
+  background: var(--red-light);
 }
 
 .connection-status.offline .status-dot {
@@ -429,83 +402,102 @@ body {
 
 
 /* =========================================================
-   TRAY CONDITION
+   PAPER TRAY
 ========================================================= */
 
-.tray-condition {
-  max-width: 360px;
+.paper-column {
+  display: flex;
+  justify-content: center;
+}
+
+.paper-status {
+  width: 100%;
 
   display: flex;
   align-items: center;
-  gap: 13px;
 
-  padding: 10px 14px;
+  gap: 12px;
 
-  border-radius: 11px;
+  padding: 11px 14px;
+
+  border-radius: 13px;
+
+  font-size: 12px;
+  font-weight: 650;
 }
 
-.tray-condition.ready {
-  background: var(--green-light);
-}
+.paper-icon {
+  position: relative;
 
-.tray-condition.warning {
-  background: var(--yellow-light);
-}
-
-.tray-condition.error {
-  background: var(--red-light);
-}
-
-.tray-icon {
-  width: 31px;
+  width: 28px;
   height: 31px;
 
   flex-shrink: 0;
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  border: 2px solid currentColor;
 
-  border-radius: 50%;
-
-  color: white;
-
-  font-size: 17px;
-  font-weight: 700;
+  border-radius: 4px;
 }
 
-.tray-condition.ready .tray-icon {
-  background: var(--green);
+.paper-icon::before {
+  content: "";
+
+  position: absolute;
+
+  left: 5px;
+  right: 5px;
+  bottom: 6px;
+
+  height: 7px;
+
+  border-top: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
 }
 
-.tray-condition.warning .tray-icon {
-  background: var(--yellow);
+.paper-icon::after {
+  content: "";
 
-  color: #252525;
+  position: absolute;
+
+  top: -7px;
+  left: 6px;
+
+  width: 12px;
+  height: 8px;
+
+  border: 2px solid currentColor;
+  border-bottom: 0;
+
+  background: inherit;
 }
 
-.tray-condition.error .tray-icon {
-  background: var(--red);
+
+/* FULL */
+
+.paper-status.full {
+  color: #07805c;
+  background: var(--green-light);
 }
 
-.tray-text {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
+
+/* LOW */
+
+.paper-status.low {
+  color: #667080;
+  background: var(--gray-light);
 }
 
-.tray-text strong {
-  font-size: 12px;
-}
 
-.tray-text span {
-  color: var(--secondary);
-  font-size: 10px;
+/* EMPTY */
+
+.paper-status.empty {
+  color: #cf2c2c;
+  background: var(--red-light);
 }
 
 
 /* =========================================================
-   CARTRIDGE CIRCLE
+   CARTRIDGE
 ========================================================= */
 
 .cartridge-area {
@@ -523,8 +515,8 @@ body {
 
   position: relative;
 
-  width: 100px;
-  height: 100px;
+  width: 94px;
+  height: 94px;
 
   display: flex;
   align-items: center;
@@ -534,24 +526,21 @@ body {
 
   background:
     conic-gradient(
-      var(--ring-color, var(--green))
+      var(--ring-color)
       calc(var(--percentage) * 1%),
 
-      #e1e5ee
+      #e0e5eb
       0
     );
 }
-
-
-/* creates donut hole */
 
 .cartridge-ring::before {
   content: "";
 
   position: absolute;
 
-  width: 79px;
-  height: 79px;
+  width: 73px;
+  height: 73px;
 
   border-radius: 50%;
 
@@ -562,27 +551,27 @@ body {
   position: relative;
   z-index: 2;
 
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
   text-align: center;
 }
 
 .cartridge-content strong {
-  font-size: 20px;
+  display: block;
+
+  font-size: 19px;
   line-height: 1;
 }
 
 .cartridge-content span {
-  max-width: 65px;
+  display: block;
 
-  margin-top: 5px;
+  max-width: 62px;
+
+  margin-top: 4px;
 
   color: var(--secondary);
 
   font-size: 8px;
-  line-height: 1.2;
+  line-height: 1.15;
 }
 
 
@@ -617,7 +606,7 @@ body {
 
   transform: rotate(45deg);
 
-  transition: transform .25s ease;
+  transition: transform 0.25s ease;
 }
 
 .expand-button.open .chevron {
@@ -626,7 +615,7 @@ body {
 
 
 /* =========================================================
-   ANALYTICS
+   ANALYTICS EXPANSION
 ========================================================= */
 
 .analytics-wrapper {
@@ -635,7 +624,7 @@ body {
   grid-template-rows: 0fr;
 
   transition:
-    grid-template-rows .35s ease;
+    grid-template-rows 0.35s ease;
 }
 
 .analytics-wrapper.open {
@@ -651,13 +640,14 @@ body {
 
   padding: 18px 24px 20px;
 
-  border: 1px solid #ccebdd;
+  border: 1px solid #caeadc;
+
   border-radius: 16px;
 
   background:
     linear-gradient(
       120deg,
-      #f3fcf8,
+      #f1fbf7,
       #fbfefd
     );
 }
@@ -672,11 +662,9 @@ body {
   margin: 0;
 
   color: var(--secondary);
+
   font-size: 12px;
 }
-
-
-/* analytics layout */
 
 .analytics-content {
   display: grid;
@@ -704,10 +692,13 @@ body {
 }
 
 .graph {
+  position: relative;
+
   height: 200px;
 
   display: flex;
   align-items: flex-end;
+
   gap: 28px;
 
   padding:
@@ -717,18 +708,15 @@ body {
     45px;
 
   border-bottom: 1px solid #bfc7d7;
-
-  position: relative;
 }
-
-
-/* y axis labels */
 
 .graph-y-label {
   position: absolute;
+
   left: 0;
 
   color: var(--secondary);
+
   font-size: 9px;
 }
 
@@ -748,9 +736,6 @@ body {
   bottom: -4px;
 }
 
-
-/* faint horizontal guides */
-
 .graph-line {
   position: absolute;
 
@@ -759,7 +744,7 @@ body {
 
   height: 1px;
 
-  background: #e7e9f1;
+  background: #e3ece8;
 }
 
 .line-3000 {
@@ -774,14 +759,13 @@ body {
   top: 136px;
 }
 
-
-/* graph column */
-
 .graph-column {
   position: relative;
+
   z-index: 2;
 
   flex: 1;
+
   height: 175px;
 
   display: flex;
@@ -808,7 +792,7 @@ body {
     linear-gradient(
       180deg,
       #25c98f,
-      #0eaa73
+      #0da975
     );
 }
 
@@ -816,8 +800,8 @@ body {
   background:
     linear-gradient(
       180deg,
-      #a8e6cc,
-      #73d2a9
+      #a7e5c8,
+      #70d2a4
     );
 }
 
@@ -830,6 +814,7 @@ body {
 
   font-size: 9px;
   line-height: 1.35;
+
   text-align: center;
 }
 
@@ -837,6 +822,7 @@ body {
   display: block;
 
   color: var(--text);
+
   font-size: 9px;
 }
 
@@ -848,13 +834,16 @@ body {
 .analytics-summary {
   display: flex;
   flex-direction: column;
+
   justify-content: center;
+
   gap: 23px;
 }
 
 .summary-item {
   display: flex;
   align-items: center;
+
   gap: 14px;
 }
 
@@ -870,22 +859,24 @@ body {
 
   background: white;
 
-  color: var(--green);
+  color: var(--green-dark);
 
   font-size: 18px;
 
   box-shadow:
-    0 3px 10px rgba(42, 48, 86, .06);
+    0 3px 10px rgba(42, 48, 86, 0.06);
 }
 
 .summary-text {
   display: flex;
   flex-direction: column;
+
   gap: 3px;
 }
 
 .summary-text span {
   color: var(--secondary);
+
   font-size: 10px;
 }
 
@@ -895,6 +886,7 @@ body {
 
 .summary-text small {
   color: var(--secondary);
+
   font-size: 8px;
 }
 
@@ -903,14 +895,56 @@ body {
    RESPONSIVE
 ========================================================= */
 
-@media (max-width: 850px) {
+@media (max-width: 950px) {
 
   .printer-overview {
     grid-template-columns:
-      180px
+      220px
+      130px
+      220px
+      130px
+      40px;
+  }
+}
+
+
+@media (max-width: 800px) {
+
+  .printer-overview {
+    grid-template-columns:
       1fr
       130px
-      35px;
+      40px;
+  }
+
+  .printer-identity {
+    grid-column: 1;
+
+    border-right: 0;
+  }
+
+  .status-column {
+    grid-column: 1;
+    grid-row: 2;
+
+    justify-content: flex-start;
+  }
+
+  .paper-column {
+    grid-column: 2;
+    grid-row: 2;
+  }
+
+  .cartridge-area {
+    grid-column: 2;
+    grid-row: 1;
+
+    border-left: 0;
+  }
+
+  .expand-button {
+    grid-column: 3;
+    grid-row: 1;
   }
 
   .analytics-content {
@@ -927,13 +961,14 @@ body {
 
   .analytics-summary {
     display: grid;
+
     grid-template-columns:
       repeat(3, 1fr);
   }
 }
 
 
-@media (max-width: 650px) {
+@media (max-width: 560px) {
 
   .dashboard {
     width: calc(100% - 20px);
@@ -941,11 +976,13 @@ body {
 
   .dashboard-header {
     align-items: flex-start;
-    gap: 15px;
+
+    gap: 12px;
   }
 
   .header-title {
     flex-direction: column;
+
     gap: 2px;
   }
 
@@ -959,30 +996,17 @@ body {
       100px
       35px;
 
-    gap: 15px;
+    gap: 12px;
   }
 
-  .printer-identity {
-    grid-column: 1;
-
-    border-right: 0;
-  }
-
-  .printer-condition {
+  .paper-column {
     grid-column: 1 / -1;
-    grid-row: 2;
+
+    justify-content: flex-start;
   }
 
-  .cartridge-area {
-    grid-column: 2;
-    grid-row: 1;
-
-    border-left: 0;
-  }
-
-  .expand-button {
-    grid-column: 3;
-    grid-row: 1;
+  .paper-status {
+    width: auto;
   }
 
   .analytics-summary {

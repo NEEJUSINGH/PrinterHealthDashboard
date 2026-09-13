@@ -51,12 +51,11 @@ body {
 }
 
 
-/*
-  Wider than before because the real printer names are long.
-*/
 .dashboard {
   width: min(1050px, calc(100% - 30px));
+
   margin: 0 auto;
+
   padding: 25px 0 60px;
 }
 
@@ -174,7 +173,6 @@ body {
 /* =========================================================
    MAIN PRINTER ROW
 
-   ORDER:
    STATUS | PRINTER GRAPHIC | NAME |
    TRAY GRAPHIC | TRAY STATUS | CARTRIDGE | ARROW
 ========================================================= */
@@ -343,10 +341,8 @@ body {
 }
 
 
-/*
-  Small printer status light.
-  Its color follows Online / Sleep / Offline.
-*/
+/* Small printer status light */
+
 .printer-display {
   position: absolute;
 
@@ -435,76 +431,115 @@ body {
 
 
 /* =========================================================
-   TRAY GRAPHIC COLUMN
+   PAPER TRAY GRAPHIC COLUMN
 ========================================================= */
 
 .tray-icon-column {
   display: flex;
   align-items: center;
   justify-content: center;
+
+  gap: 6px;
 }
 
 
 /* =========================================================
-   PAPER TRAY ICON
+   PAPER TRAY GRAPHIC
+
+   Neutral gray like the printer.
+   The graphic itself is NOT color coded.
 ========================================================= */
 
 .paper-icon {
   position: relative;
 
-  width: 28px;
-  height: 31px;
+  width: 44px;
+  height: 38px;
 
   flex-shrink: 0;
-
-  border: 2px solid currentColor;
-
-  border-radius: 4px;
 }
+
+
+/* Back sheet */
 
 .paper-icon::before {
   content: "";
 
   position: absolute;
 
-  left: 5px;
-  right: 5px;
-  bottom: 6px;
+  top: 1px;
+  left: 11px;
 
-  height: 7px;
+  width: 25px;
+  height: 25px;
 
-  border-top: 2px solid currentColor;
-  border-bottom: 2px solid currentColor;
+  border: 1px solid #d4dae3;
+  border-radius: 3px;
+
+  background:
+    linear-gradient(
+      180deg,
+      #ffffff,
+      #edf1f5
+    );
+
+  box-shadow:
+    0 2px 4px rgba(31, 40, 65, 0.07);
 }
+
+
+/* Tray body */
 
 .paper-icon::after {
   content: "";
 
   position: absolute;
 
-  top: -7px;
-  left: 6px;
+  left: 3px;
+  bottom: 1px;
 
-  width: 12px;
-  height: 8px;
+  width: 38px;
+  height: 16px;
 
-  border: 2px solid currentColor;
-  border-bottom: 0;
+  border-radius: 4px 4px 7px 7px;
+
+  background:
+    linear-gradient(
+      180deg,
+      #d9dee6,
+      #adb6c2
+    );
+
+  box-shadow:
+    0 3px 6px rgba(31, 40, 65, 0.14);
 }
 
 
-/* tray icon colors */
+/* =========================================================
+   SMALL PAPER TRAY STATUS LIGHT
 
-.paper-icon.full {
-  color: var(--green);
+   This is the only colored part of the tray graphic.
+========================================================= */
+
+.tray-status-light {
+  width: 10px;
+  height: 4px;
+
+  flex-shrink: 0;
+
+  border-radius: 2px;
 }
 
-.paper-icon.low {
-  color: var(--gray);
+.tray-status-light.full {
+  background: var(--green);
 }
 
-.paper-icon.empty {
-  color: var(--red);
+.tray-status-light.low {
+  background: var(--gray);
+}
+
+.tray-status-light.empty {
+  background: var(--red);
 }
 
 
@@ -519,12 +554,13 @@ body {
 }
 
 .paper-status {
-  min-width: 150px;
+  min-width: 85px;
 
   display: flex;
   align-items: center;
+  justify-content: center;
 
-  padding: 10px 13px;
+  padding: 10px 14px;
 
   border-radius: 13px;
 
@@ -572,7 +608,6 @@ body {
   justify-content: flex-end;
 
   padding-left: 14px;
-
 }
 
 .cartridge-ring {
@@ -959,10 +994,6 @@ body {
 
 /* =========================================================
    SMALLER SCREENS
-
-   Important:
-   Desktop layout stays untouched until the screen is
-   genuinely small.
 ========================================================= */
 
 @media (max-width: 900px) {
@@ -1000,7 +1031,7 @@ body {
   }
 
   .paper-status {
-    min-width: 135px;
+    min-width: 80px;
 
     padding:
       10px
@@ -1021,10 +1052,10 @@ body {
 }
 
 
-/*
-  Phone-sized screen.
-  Only here do we allow the row to stack.
-*/
+/* =========================================================
+   PHONE
+========================================================= */
+
 @media (max-width: 650px) {
 
   .dashboard-header {
@@ -1084,8 +1115,6 @@ body {
   .cartridge-area {
     grid-column: 2;
     grid-row: 1 / 3;
-
-    border-left: 0;
 
     padding-left: 0;
   }

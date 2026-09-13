@@ -247,14 +247,12 @@ function getPaperLabel(status) {
 
 /* =========================================================
    CARTRIDGE COLOR
+
+   Under 20% = red
+   20% and above = green
 ========================================================= */
 
 function getCartridgeColor(percentage) {
-
-  /*
-    Anything under 20% becomes red.
-    Everything else stays green.
-  */
 
   if (percentage < 20) {
     return "#e93434";
@@ -357,7 +355,7 @@ function createGraph(history) {
 
 
 /* =========================================================
-   CREATE CARD
+   CREATE PRINTER CARD
 ========================================================= */
 
 function createPrinterCard(printer) {
@@ -389,31 +387,10 @@ function createPrinterCard(printer) {
     >
 
 
-      <!-- COLLAPSED ROW -->
-
       <div class="printer-overview">
 
 
-        <!-- PRINTER -->
-
-        <div class="printer-identity">
-
-          ${createPrinterGraphic(printer.status)}
-
-
-          <div class="printer-text">
-
-            <h2>
-              ${printer.name}
-            </h2>
-
-          </div>
-
-        </div>
-
-
-
-        <!-- ONLINE / SLEEP / OFFLINE -->
+        <!-- STATUS -->
 
         <div class="status-column">
 
@@ -436,7 +413,46 @@ function createPrinterCard(printer) {
 
 
 
-        <!-- PAPER TRAY -->
+        <!-- PRINTER GRAPHIC -->
+
+        <div class="graphic-column">
+
+          ${createPrinterGraphic(
+            printer.status
+          )}
+
+        </div>
+
+
+
+        <!-- PRINTER NAME -->
+
+        <div class="printer-text">
+
+          <h2>
+            ${printer.name}
+          </h2>
+
+        </div>
+
+
+
+        <!-- TRAY GRAPHIC -->
+
+        <div class="tray-icon-column">
+
+          <span
+            class="
+              paper-icon
+              ${printer.paperTray}
+            "
+          ></span>
+
+        </div>
+
+
+
+        <!-- TRAY STATUS -->
 
         <div class="paper-column">
 
@@ -446,8 +462,6 @@ function createPrinterCard(printer) {
               ${printer.paperTray}
             "
           >
-
-            <span class="paper-icon"></span>
 
             ${getPaperLabel(
               printer.paperTray
@@ -545,30 +559,22 @@ function createPrinterCard(printer) {
                 <div class="graph">
 
 
-                  <span
-                    class="graph-y-label y-3000"
-                  >
+                  <span class="graph-y-label y-3000">
                     3,000
                   </span>
 
 
-                  <span
-                    class="graph-y-label y-2000"
-                  >
+                  <span class="graph-y-label y-2000">
                     2,000
                   </span>
 
 
-                  <span
-                    class="graph-y-label y-1000"
-                  >
+                  <span class="graph-y-label y-1000">
                     1,000
                   </span>
 
 
-                  <span
-                    class="graph-y-label y-0"
-                  >
+                  <span class="graph-y-label y-0">
                     0
                   </span>
 
@@ -600,7 +606,7 @@ function createPrinterCard(printer) {
 
 
 
-              <!-- ANALYTICS SUMMARY -->
+              <!-- SUMMARY -->
 
               <div class="analytics-summary">
 
@@ -640,12 +646,10 @@ function createPrinterCard(printer) {
                     </span>
 
                     <strong>
-
                       ${formatNumber(
                         currentCartridge.pages
                       )}
                       pages
-
                     </strong>
 
                   </div>
@@ -738,10 +742,6 @@ function togglePrinter(id) {
       .contains("open");
 
 
-  /*
-    Close all printers first.
-  */
-
   document
     .querySelectorAll(
       ".analytics-wrapper"
@@ -768,11 +768,6 @@ function togglePrinter(id) {
 
     });
 
-
-  /*
-    Open selected printer
-    if it was previously closed.
-  */
 
   if (!alreadyOpen) {
 
@@ -840,13 +835,8 @@ function updateTime() {
 
 function refreshDashboard() {
 
-  /*
-    Later this can fetch live printer data.
-
-    For now it updates the timestamp.
-  */
-
   updateTime();
+
 }
 
 

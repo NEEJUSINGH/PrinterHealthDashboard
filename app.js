@@ -1,5 +1,4 @@
 const printers = [
-
   {
     id: 1,
 
@@ -42,7 +41,7 @@ const printers = [
   {
     id: 2,
 
-    name: "123 Building Women Computer Lab",
+    name: "123 Building Women Computer lab",
 
     status: "online",
 
@@ -81,7 +80,7 @@ const printers = [
   {
     id: 3,
 
-    name: "123 Building Men Computer Lab",
+    name: "123 Building Men Computer lab",
 
     status: "sleep",
 
@@ -120,7 +119,7 @@ const printers = [
   {
     id: 4,
 
-    name: "C-Dorm Computer Lab",
+    name: "C-Dorm Computer lab",
 
     status: "online",
 
@@ -159,7 +158,7 @@ const printers = [
   {
     id: 5,
 
-    name: "Sudhana Center Computer Lab",
+    name: "Sudhana Center Computer lab",
 
     status: "offline",
 
@@ -193,25 +192,19 @@ const printers = [
       }
     ]
   }
-
 ];
 
 
-/* =========================================================
-   HELPERS
-========================================================= */
 
 function formatNumber(number) {
 
   return new Intl.NumberFormat(
     "en-US"
   ).format(number);
+
 }
 
 
-/* =========================================================
-   PRINTER STATUS
-========================================================= */
 
 function getStatusLabel(status) {
 
@@ -224,12 +217,10 @@ function getStatusLabel(status) {
   }
 
   return "Offline";
+
 }
 
 
-/* =========================================================
-   PAPER TRAY
-========================================================= */
 
 function getPaperLabel(status) {
 
@@ -242,15 +233,10 @@ function getPaperLabel(status) {
   }
 
   return "Empty";
+
 }
 
 
-/* =========================================================
-   CARTRIDGE COLOR
-
-   Under 20% = red
-   20% and above = green
-========================================================= */
 
 function getCartridgeColor(percentage) {
 
@@ -259,17 +245,14 @@ function getCartridgeColor(percentage) {
   }
 
   return "#12b981";
+
 }
 
 
-/* =========================================================
-   PRINTER GRAPHIC
-========================================================= */
 
 function createPrinterGraphic(status) {
 
   return `
-
     <div class="printer-graphic ${status}">
 
       <div class="printer-paper"></div>
@@ -285,14 +268,11 @@ function createPrinterGraphic(status) {
       <div class="printer-output"></div>
 
     </div>
-
   `;
+
 }
 
 
-/* =========================================================
-   GRAPH
-========================================================= */
 
 function createGraph(history) {
 
@@ -304,59 +284,48 @@ function createGraph(history) {
   );
 
 
-  return history.map(item => {
+  return history
+    .map(item => {
 
-    const height =
-      Math.max(
+      const height = Math.max(
         4,
-        (
-          item.pages /
-          largestValue
-        ) * 100
+        (item.pages / largestValue) * 100
       );
 
 
-    return `
+      return `
+        <div class="graph-column">
 
-      <div class="graph-column">
-
-        <span class="graph-value">
-          ${formatNumber(item.pages)}
-        </span>
-
-
-        <div
-          class="
-            graph-bar
-            ${item.current ? "current" : ""}
-          "
-          style="
-            height: ${height}%;
-          "
-        ></div>
+          <span class="graph-value">
+            ${formatNumber(item.pages)}
+          </span>
 
 
-        <div class="graph-label">
+          <div
+            class="graph-bar ${item.current ? "current" : ""}"
+            style="height: ${height}%;"
+          ></div>
 
-          ${item.start} – ${item.end}
 
-          <strong>
-            ${item.label}
-          </strong>
+          <div class="graph-label">
+
+            ${item.start} – ${item.end}
+
+            <strong>
+              ${item.label}
+            </strong>
+
+          </div>
 
         </div>
+      `;
 
-      </div>
+    })
+    .join("");
 
-    `;
-
-  }).join("");
 }
 
 
-/* =========================================================
-   CREATE PRINTER CARD
-========================================================= */
 
 function createPrinterCard(printer) {
 
@@ -368,8 +337,7 @@ function createPrinterCard(printer) {
 
   const estimatedReams =
     (
-      currentCartridge.pages /
-      500
+      currentCartridge.pages / 500
     ).toFixed(1);
 
 
@@ -380,7 +348,6 @@ function createPrinterCard(printer) {
 
 
   return `
-
     <article
       class="printer-card"
       id="printer-${printer.id}"
@@ -390,22 +357,17 @@ function createPrinterCard(printer) {
       <div class="printer-overview">
 
 
-        <!-- STATUS -->
+        <!-- CONNECTION STATUS -->
 
         <div class="status-column">
 
           <div
-            class="
-              connection-status
-              ${printer.status}
-            "
+            class="connection-status ${printer.status}"
           >
 
             <span class="status-dot"></span>
 
-            ${getStatusLabel(
-              printer.status
-            )}
+            ${getStatusLabel(printer.status)}
 
           </div>
 
@@ -417,9 +379,7 @@ function createPrinterCard(printer) {
 
         <div class="graphic-column">
 
-          ${createPrinterGraphic(
-            printer.status
-          )}
+          ${createPrinterGraphic(printer.status)}
 
         </div>
 
@@ -437,58 +397,15 @@ function createPrinterCard(printer) {
 
 
 
-        <!-- TRAY GRAPHIC -->
-
-
-        <div class="tray-icon-column">
-        
-          <span class="paper-icon"></span>
-        
-          <span
-            class="
-              tray-status-light
-              ${printer.paperTray}
-            "
-          ></span>
-        
-        </div>
-
-
-
-        <!-- TRAY STATUS -->
-
-        <div class="paper-column">
-
-          <div
-            class="
-              paper-status
-              ${printer.paperTray}
-            "
-          >
-
-            ${getPaperLabel(
-              printer.paperTray
-            )}
-
-          </div>
-
-        </div>
-
-
-
         <!-- CARTRIDGE -->
 
         <div class="cartridge-area">
 
           <div
             class="cartridge-ring"
-
             style="
-              --percentage:
-                ${printer.cartridgeRemaining};
-
-              --ring-color:
-                ${cartridgeColor};
+              --percentage: ${printer.cartridgeRemaining};
+              --ring-color: ${cartridgeColor};
             "
           >
 
@@ -510,17 +427,31 @@ function createPrinterCard(printer) {
 
 
 
-        <!-- EXPAND -->
+        <!-- PAPER TRAY -->
+
+        <div class="paper-column">
+
+          <span class="paper-label">
+            Paper Tray:
+          </span>
+
+          <span
+            class="paper-status ${printer.paperTray}"
+          >
+            ${getPaperLabel(printer.paperTray)}
+          </span>
+
+        </div>
+
+
+
+        <!-- EXPAND BUTTON -->
 
         <button
           class="expand-button"
           id="button-${printer.id}"
           onclick="togglePrinter(${printer.id})"
-
-          aria-label="
-            Show ${printer.name} analytics
-          "
-
+          aria-label="Show ${printer.name} analytics"
           aria-expanded="false"
         >
 
@@ -528,11 +459,12 @@ function createPrinterCard(printer) {
 
         </button>
 
+
       </div>
 
 
 
-      <!-- ANALYTICS -->
+      <!-- EXPANDED ANALYTICS -->
 
       <div
         class="analytics-wrapper"
@@ -543,13 +475,16 @@ function createPrinterCard(printer) {
 
           <section class="analytics">
 
+
             <h3>
               Usage Analytics
             </h3>
 
+
             <p class="analytics-subtitle">
               Pages printed by cartridge
             </p>
+
 
 
             <div class="analytics-content">
@@ -562,22 +497,30 @@ function createPrinterCard(printer) {
                 <div class="graph">
 
 
-                  <span class="graph-y-label y-3000">
+                  <span
+                    class="graph-y-label y-3000"
+                  >
                     3,000
                   </span>
 
 
-                  <span class="graph-y-label y-2000">
+                  <span
+                    class="graph-y-label y-2000"
+                  >
                     2,000
                   </span>
 
 
-                  <span class="graph-y-label y-1000">
+                  <span
+                    class="graph-y-label y-1000"
+                  >
                     1,000
                   </span>
 
 
-                  <span class="graph-y-label y-0">
+                  <span
+                    class="graph-y-label y-0"
+                  >
                     0
                   </span>
 
@@ -599,9 +542,8 @@ function createPrinterCard(printer) {
 
 
 
-                  ${createGraph(
-                    printer.history
-                  )}
+                  ${createGraph(printer.history)}
+
 
                 </div>
 
@@ -649,9 +591,7 @@ function createPrinterCard(printer) {
                     </span>
 
                     <strong>
-                      ${formatNumber(
-                        currentCartridge.pages
-                      )}
+                      ${formatNumber(currentCartridge.pages)}
                       pages
                     </strong>
 
@@ -688,6 +628,7 @@ function createPrinterCard(printer) {
 
               </div>
 
+
             </div>
 
           </section>
@@ -696,15 +637,13 @@ function createPrinterCard(printer) {
 
       </div>
 
-    </article>
 
+    </article>
   `;
+
 }
 
 
-/* =========================================================
-   RENDER
-========================================================= */
 
 function renderPrinters() {
 
@@ -718,12 +657,10 @@ function renderPrinters() {
     printers
       .map(createPrinterCard)
       .join("");
+
 }
 
 
-/* =========================================================
-   EXPAND / COLLAPSE
-========================================================= */
 
 function togglePrinter(id) {
 
@@ -740,9 +677,9 @@ function togglePrinter(id) {
 
 
   const alreadyOpen =
-    selectedAnalytics
-      .classList
-      .contains("open");
+    selectedAnalytics.classList.contains(
+      "open"
+    );
 
 
   document
@@ -751,7 +688,9 @@ function togglePrinter(id) {
     )
     .forEach(panel => {
 
-      panel.classList.remove("open");
+      panel.classList.remove(
+        "open"
+      );
 
     });
 
@@ -762,7 +701,9 @@ function togglePrinter(id) {
     )
     .forEach(button => {
 
-      button.classList.remove("open");
+      button.classList.remove(
+        "open"
+      );
 
       button.setAttribute(
         "aria-expanded",
@@ -784,18 +725,17 @@ function togglePrinter(id) {
       .add("open");
 
 
-    selectedButton.setAttribute(
-      "aria-expanded",
-      "true"
-    );
+    selectedButton
+      .setAttribute(
+        "aria-expanded",
+        "true"
+      );
 
   }
+
 }
 
 
-/* =========================================================
-   UPDATED TIME
-========================================================= */
 
 function updateTime() {
 
@@ -829,12 +769,10 @@ function updateTime() {
     )
     .textContent =
       `${date}  ${time}`;
+
 }
 
 
-/* =========================================================
-   REFRESH
-========================================================= */
 
 function refreshDashboard() {
 
@@ -843,9 +781,6 @@ function refreshDashboard() {
 }
 
 
-/* =========================================================
-   START
-========================================================= */
 
 renderPrinters();
 

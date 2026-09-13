@@ -13,9 +13,11 @@
   --green-light: #e8faf3;
 
   --gray: #929baa;
+  --gray-dark: #667080;
   --gray-light: #f0f2f5;
 
   --red: #e93434;
+  --red-dark: #cb2929;
   --red-light: #fff0f0;
 
   --line: #e0e5ef;
@@ -48,8 +50,13 @@ body {
     var(--background);
 }
 
+
+/*
+  Wider than before because the real printer names are long.
+*/
 .dashboard {
-  width: min(1100px, calc(100% - 40px));
+  width: min(1380px, calc(100% - 30px));
+
   margin: 0 auto;
 
   padding: 25px 0 60px;
@@ -80,6 +87,7 @@ body {
 
   font-size: 29px;
   font-weight: 700;
+
   letter-spacing: -1px;
 }
 
@@ -149,8 +157,7 @@ body {
 
   border-radius: 19px;
 
-  background:
-    rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.93);
 
   box-shadow:
     0 8px 25px rgba(37, 47, 82, 0.05);
@@ -167,60 +174,118 @@ body {
 
 
 /* =========================================================
-   COLLAPSED ROW
+   MAIN PRINTER ROW
+
+   ORDER:
+   STATUS | PRINTER GRAPHIC | NAME |
+   TRAY GRAPHIC | TRAY STATUS | CARTRIDGE | ARROW
 ========================================================= */
 
 .printer-overview {
-  min-height: 112px;
+  min-height: 132px;
 
   display: grid;
 
   grid-template-columns:
-    280px
-    140px
-    240px
-    1fr
-    45px;
+    125px
+    95px
+    minmax(310px, 1fr)
+    55px
+    165px
+    130px
+    38px;
 
-  align-items: center;
-
-  gap: 18px;
-
-  padding: 14px 22px;
-}
-
-/* =========================================================
-   PRINTER IDENTITY
-========================================================= */
-
-.printer-identity {
-  height: 100%;
-
-  display: flex;
   align-items: center;
 
   gap: 14px;
 
-  padding-right: 12px;
-
-  border-right: 1px solid var(--line);
-
-  min-width: 0;
+  padding: 15px 22px;
 }
 
-.printer-text {
-  min-width: 0;
+
+/* =========================================================
+   STATUS
+========================================================= */
+
+.status-column {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
 }
 
-.printer-text h2 {
-  margin: 0;
+.connection-status {
+  min-width: 112px;
 
-  font-size: 16px;
-  font-weight: 700;
+  display: flex;
+  align-items: center;
 
-  letter-spacing: -0.3px;
+  gap: 9px;
 
-  white-space: nowrap;
+  padding: 11px 13px;
+
+  border-radius: 13px;
+
+  font-size: 13px;
+  font-weight: 650;
+}
+
+.status-dot {
+  width: 13px;
+  height: 13px;
+
+  border-radius: 50%;
+
+  flex-shrink: 0;
+}
+
+
+/* ONLINE */
+
+.connection-status.online {
+  color: #087e5b;
+
+  background: var(--green-light);
+}
+
+.connection-status.online .status-dot {
+  background: var(--green);
+}
+
+
+/* SLEEP */
+
+.connection-status.sleep {
+  color: #596170;
+
+  background: var(--gray-light);
+}
+
+.connection-status.sleep .status-dot {
+  background: var(--gray);
+}
+
+
+/* OFFLINE */
+
+.connection-status.offline {
+  color: var(--red-dark);
+
+  background: var(--red-light);
+}
+
+.connection-status.offline .status-dot {
+  background: var(--red);
+}
+
+
+/* =========================================================
+   PRINTER GRAPHIC COLUMN
+========================================================= */
+
+.graphic-column {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 
@@ -279,6 +344,11 @@ body {
     0 5px 8px rgba(31, 40, 65, 0.14);
 }
 
+
+/*
+  Small printer status light.
+  Its color follows Online / Sleep / Offline.
+*/
 .printer-display {
   position: absolute;
 
@@ -289,20 +359,15 @@ body {
   height: 4px;
 
   border-radius: 2px;
-
-  background: var(--green);
 }
-
 
 .printer-graphic.online .printer-display {
   background: var(--green);
 }
 
-
 .printer-graphic.sleep .printer-display {
   background: var(--gray);
 }
-
 
 .printer-graphic.offline .printer-display {
   background: var(--red);
@@ -349,100 +414,42 @@ body {
 
 
 /* =========================================================
-   PRINTER STATUS
+   PRINTER NAME
 ========================================================= */
 
-.status-column {
-  display: flex;
-  justify-content: center;
-}
-
-.connection-status {
-  min-width: 115px;
+.printer-text {
+  min-width: 0;
 
   display: flex;
   align-items: center;
-
-  gap: 10px;
-
-  padding: 11px 14px;
-
-  border-radius: 13px;
-
-  font-size: 13px;
-  font-weight: 650;
 }
 
-.status-dot {
-  width: 14px;
-  height: 14px;
+.printer-text h2 {
+  margin: 0;
 
-  border-radius: 50%;
+  font-size: 16px;
+  font-weight: 700;
 
-  flex-shrink: 0;
-}
+  letter-spacing: -0.25px;
 
-
-/* ONLINE */
-
-.connection-status.online {
-  color: #087e5b;
-  background: var(--green-light);
-}
-
-.connection-status.online .status-dot {
-  background: var(--green);
-}
-
-
-/* SLEEP */
-
-.connection-status.sleep {
-  color: #596170;
-  background: var(--gray-light);
-}
-
-.connection-status.sleep .status-dot {
-  background: var(--gray);
-}
-
-
-/* OFFLINE */
-
-.connection-status.offline {
-  color: #cb2929;
-  background: var(--red-light);
-}
-
-.connection-status.offline .status-dot {
-  background: var(--red);
+  white-space: nowrap;
 }
 
 
 /* =========================================================
-   PAPER TRAY
+   TRAY GRAPHIC COLUMN
 ========================================================= */
 
-.paper-column {
+.tray-icon-column {
   display: flex;
+  align-items: center;
   justify-content: center;
 }
 
-.paper-status {
-  width: 100%;
 
-  display: flex;
-  align-items: center;
-
-  gap: 12px;
-
-  padding: 11px 14px;
-
-  border-radius: 13px;
-
-  font-size: 12px;
-  font-weight: 650;
-}
+/* =========================================================
+   PAPER TRAY ICON
+========================================================= */
 
 .paper-icon {
   position: relative;
@@ -485,8 +492,46 @@ body {
 
   border: 2px solid currentColor;
   border-bottom: 0;
+}
 
-  background: inherit;
+
+/* tray icon colors */
+
+.paper-icon.full {
+  color: var(--green);
+}
+
+.paper-icon.low {
+  color: var(--gray);
+}
+
+.paper-icon.empty {
+  color: var(--red);
+}
+
+
+/* =========================================================
+   PAPER TRAY STATUS
+========================================================= */
+
+.paper-column {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.paper-status {
+  min-width: 150px;
+
+  display: flex;
+  align-items: center;
+
+  padding: 10px 13px;
+
+  border-radius: 13px;
+
+  font-size: 12px;
+  font-weight: 650;
 }
 
 
@@ -494,6 +539,7 @@ body {
 
 .paper-status.full {
   color: #07805c;
+
   background: var(--green-light);
 }
 
@@ -501,7 +547,8 @@ body {
 /* LOW */
 
 .paper-status.low {
-  color: #667080;
+  color: var(--gray-dark);
+
   background: var(--gray-light);
 }
 
@@ -509,7 +556,8 @@ body {
 /* EMPTY */
 
 .paper-status.empty {
-  color: #cf2c2c;
+  color: var(--red-dark);
+
   background: var(--red-light);
 }
 
@@ -525,19 +573,20 @@ body {
   align-items: center;
   justify-content: flex-end;
 
-  padding-right: 4px;
+  padding-left: 14px;
 
   border-left: 1px solid var(--line);
 }
 
 .cartridge-ring {
-  margin-left: auto;
   --percentage: 50;
 
   position: relative;
 
-  width: 94px;
-  height: 94px;
+  width: 110px;
+  height: 110px;
+
+  flex-shrink: 0;
 
   display: flex;
   align-items: center;
@@ -560,8 +609,8 @@ body {
 
   position: absolute;
 
-  width: 73px;
-  height: 73px;
+  width: 85px;
+  height: 85px;
 
   border-radius: 50%;
 
@@ -578,16 +627,16 @@ body {
 .cartridge-content strong {
   display: block;
 
-  font-size: 19px;
+  font-size: 20px;
   line-height: 1;
 }
 
 .cartridge-content span {
   display: block;
 
-  max-width: 62px;
+  max-width: 66px;
 
-  margin-top: 4px;
+  margin-top: 5px;
 
   color: var(--secondary);
 
@@ -782,7 +831,6 @@ body {
 
 .graph-column {
   position: relative;
-
   z-index: 2;
 
   flex: 1;
@@ -913,54 +961,136 @@ body {
 
 
 /* =========================================================
-   RESPONSIVE
+   SMALLER SCREENS
+
+   Important:
+   Desktop layout stays untouched until the screen is
+   genuinely small.
 ========================================================= */
 
-@media (max-width: 950px) {
+@media (max-width: 900px) {
+
+  .dashboard {
+    width: calc(100% - 20px);
+  }
 
   .printer-overview {
     grid-template-columns:
-      220px
-      130px
-      220px
-      130px
-      40px;
+      115px
+      80px
+      minmax(240px, 1fr)
+      45px
+      145px
+      105px
+      34px;
+
+    gap: 8px;
+
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .printer-text h2 {
+    font-size: 14px;
+  }
+
+  .connection-status {
+    min-width: 105px;
+
+    padding:
+      10px
+      10px;
+  }
+
+  .paper-status {
+    min-width: 135px;
+
+    padding:
+      10px
+      10px;
+
+    font-size: 11px;
+  }
+
+  .cartridge-ring {
+    width: 95px;
+    height: 95px;
+  }
+
+  .cartridge-ring::before {
+    width: 73px;
+    height: 73px;
   }
 }
 
 
-@media (max-width: 800px) {
+/*
+  Phone-sized screen.
+  Only here do we allow the row to stack.
+*/
+@media (max-width: 650px) {
+
+  .dashboard-header {
+    align-items: flex-start;
+
+    gap: 12px;
+  }
+
+  .header-title {
+    flex-direction: column;
+
+    gap: 2px;
+  }
 
   .printer-overview {
     grid-template-columns:
       1fr
-      130px
-      40px;
-  }
+      100px
+      35px;
 
-  .printer-identity {
-    grid-column: 1;
-
-    border-right: 0;
+    gap: 12px;
   }
 
   .status-column {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .graphic-column {
     grid-column: 1;
     grid-row: 2;
 
     justify-content: flex-start;
   }
 
+  .printer-text {
+    grid-column: 1 / 3;
+    grid-row: 3;
+  }
+
+  .printer-text h2 {
+    white-space: normal;
+  }
+
+  .tray-icon-column {
+    grid-column: 1;
+    grid-row: 4;
+
+    justify-content: flex-start;
+  }
+
   .paper-column {
-    grid-column: 2;
-    grid-row: 2;
+    grid-column: 1 / 3;
+    grid-row: 5;
   }
 
   .cartridge-area {
     grid-column: 2;
-    grid-row: 1;
+    grid-row: 1 / 3;
 
     border-left: 0;
+
+    padding-left: 0;
   }
 
   .expand-button {
@@ -983,45 +1113,6 @@ body {
   .analytics-summary {
     display: grid;
 
-    grid-template-columns:
-      repeat(3, 1fr);
-  }
-}
-
-
-@media (max-width: 560px) {
-
-  .dashboard {
-    width: calc(100% - 20px);
-  }
-
-  .dashboard-header {
-    align-items: flex-start;
-
-    gap: 12px;
-  }
-
-  .header-title {
-    flex-direction: column;
-
-    gap: 2px;
-  }
-
-  .header-update {
-    font-size: 9px;
-  }
-
-  .paper-column {
-    grid-column: 1 / -1;
-
-    justify-content: flex-start;
-  }
-
-  .paper-status {
-    width: auto;
-  }
-
-  .analytics-summary {
     grid-template-columns: 1fr;
   }
 }

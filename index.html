@@ -2,21 +2,12 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
-
-  <title>Printer Health Dashboard</title>
+  <title>CS Lab Printer Dashboard</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
-
-  <link
-    rel="preconnect"
-    href="https://fonts.gstatic.com"
-    crossorigin
-  >
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
   <link
     href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
@@ -31,39 +22,34 @@
   <main class="dashboard">
 
     <!-- HEADER -->
+    <header class="dashboard-header">
 
-    <header class="page-header">
-
-      <div>
-        <p class="eyebrow">CS LAB</p>
-
-        <h1>Printer Health</h1>
-
-        <p class="subtitle">
-          5 printers
-        </p>
+      <div class="header-title">
+        <h1>CS Lab</h1>
+        <span>Printer Dashboard</span>
       </div>
 
+      <div class="header-update">
+        Last updated:
+        <strong id="lastUpdated">--</strong>
 
-      <div class="updated-box">
-        <span>Updated</span>
-
-        <strong id="lastUpdated">
-          --
-        </strong>
+        <button
+          class="refresh-button"
+          onclick="refreshDashboard()"
+          aria-label="Refresh dashboard"
+        >
+          ↻
+        </button>
       </div>
 
     </header>
 
 
-
-    <!-- PRINTER CARDS -->
-
+    <!-- PRINTERS -->
     <section
       id="printerList"
       class="printer-list"
-    >
-    </section>
+    ></section>
 
   </main>
 

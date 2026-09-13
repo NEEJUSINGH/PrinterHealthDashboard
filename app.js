@@ -439,15 +439,18 @@ function createPrinterCard(printer) {
 
         <!-- TRAY GRAPHIC -->
 
-        <div class="tray-icon-column">
 
+        <div class="tray-icon-column">
+        
+          <span class="paper-icon"></span>
+        
           <span
             class="
-              paper-icon
+              tray-status-light
               ${printer.paperTray}
             "
           ></span>
-
+        
         </div>
 
 

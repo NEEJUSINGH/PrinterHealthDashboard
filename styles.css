@@ -290,6 +290,21 @@ body {
   background: var(--green);
 }
 
+
+.printer-graphic.online .printer-display {
+  background: var(--green);
+}
+
+
+.printer-graphic.sleep .printer-display {
+  background: var(--gray);
+}
+
+
+.printer-graphic.offline .printer-display {
+  background: var(--red);
+}
+
 .printer-slot {
   position: absolute;
 

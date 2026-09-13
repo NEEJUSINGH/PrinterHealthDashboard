@@ -3,7 +3,7 @@ const printers = [
   {
     id: 1,
 
-    name: "Printer 01",
+    name: "123 Building Copier Room",
 
     status: "online",
 
@@ -42,7 +42,7 @@ const printers = [
   {
     id: 2,
 
-    name: "Printer 02",
+    name: "123 Building Women Computer Lab",
 
     status: "online",
 
@@ -81,7 +81,7 @@ const printers = [
   {
     id: 3,
 
-    name: "Printer 03",
+    name: "123 Building Men Computer Lab",
 
     status: "sleep",
 
@@ -120,7 +120,7 @@ const printers = [
   {
     id: 4,
 
-    name: "Printer 04",
+    name: "C-Dorm Computer Lab",
 
     status: "online",
 
@@ -159,7 +159,7 @@ const printers = [
   {
     id: 5,
 
-    name: "Printer 05",
+    name: "Sudhana Center Computer Lab",
 
     status: "offline",
 

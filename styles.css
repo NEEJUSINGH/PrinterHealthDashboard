@@ -11,8 +11,8 @@
   --text: #111936;
   --secondary: #536080;
 
-  --purple: #6d63ff;
-  --purple-light: #eeecff;
+  --green: #12b981;
+  --green-light: #e9faf4;
 
   --green: #12b981;
   --green-light: #e9faf4;
@@ -534,7 +534,7 @@ body {
 
   background:
     conic-gradient(
-      var(--ring-color, var(--purple))
+      var(--ring-color, var(--green))
       calc(var(--percentage) * 1%),
 
       #e1e5ee
@@ -651,14 +651,14 @@ body {
 
   padding: 18px 24px 20px;
 
-  border: 1px solid #dedffd;
+  border: 1px solid #ccebdd;
   border-radius: 16px;
 
   background:
     linear-gradient(
       120deg,
-      #f7f7ff,
-      #fbfcff
+      #f3fcf8,
+      #fbfefd
     );
 }
 
@@ -807,8 +807,8 @@ body {
   background:
     linear-gradient(
       180deg,
-      #8074ff,
-      #6459ef
+      #25c98f,
+      #0eaa73
     );
 }
 
@@ -816,8 +816,8 @@ body {
   background:
     linear-gradient(
       180deg,
-      #bbb6ff,
-      #8e87f8
+      #a8e6cc,
+      #73d2a9
     );
 }
 
@@ -870,7 +870,7 @@ body {
 
   background: white;
 
-  color: var(--purple);
+  color: var(--green);
 
   font-size: 18px;
 

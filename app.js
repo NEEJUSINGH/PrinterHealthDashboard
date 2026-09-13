@@ -268,11 +268,11 @@ function getCartridgeColor(percentage) {
    PRINTER GRAPHIC
 ========================================================= */
 
-function createPrinterGraphic() {
+function createPrinterGraphic(status) {
 
   return `
 
-    <div class="printer-graphic">
+    <div class="printer-graphic ${status}">
 
       <div class="printer-paper"></div>
 
@@ -398,7 +398,7 @@ function createPrinterCard(printer) {
 
         <div class="printer-identity">
 
-          ${createPrinterGraphic()}
+          ${createPrinterGraphic(printer.status)}
 
 
           <div class="printer-text">

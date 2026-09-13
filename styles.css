@@ -954,9 +954,10 @@ body {
 
     linear-gradient(
       120deg,
-      #f1fbf7,
-      #fbfefd
+      #f3f7ff,
+      #fbfcff
     );
+  border: 1px solid #d7e2f5;
 
 }
 
@@ -1167,8 +1168,8 @@ body {
 
     linear-gradient(
       180deg,
-      #25c98f,
-      #0da975
+      #5b8def,
+      #3f6fd8
     );
 
 }
@@ -1180,8 +1181,8 @@ body {
 
     linear-gradient(
       180deg,
-      #a7e5c8,
-      #70d2a4
+      #b8cdf7,
+      #8eafea
     );
 
 }

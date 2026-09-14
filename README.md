@@ -1,13 +1,13 @@
 # CS Lab Printer Health Dashboard
 
-A simple dashboard for monitoring the health and cartridge usage of CS Lab printers.
+A simple dashboard for monitoring the health and cartridge usage of Computer Lab printers.
 
 ## Current Version
 
 Version 1 is being developed for one printer:
 
 Printer 01  
-IP: 10.11.17.42
+IP: 00.00.00.00
 
 The dashboard currently displays:
 

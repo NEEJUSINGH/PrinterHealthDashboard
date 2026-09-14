@@ -121,7 +121,7 @@ const printers = [
 
     name: "C-Dorm Computer lab",
 
-    status: "online",
+    status: "offline",
 
     paperTray: "available",
 
@@ -160,7 +160,7 @@ const printers = [
 
     name: "Sudhana Center Computer lab",
 
-    status: "offline",
+    status: "online",
 
     paperTray: "available",
 
@@ -228,7 +228,7 @@ function getPaperLabel(status) {
     return "Available";
   }
 
-  return "Tray Empty";
+  return "Empty";
 
 }
 

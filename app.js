@@ -6,7 +6,7 @@ const printers = [
 
     status: "online",
 
-    paperTray: "Available",
+    paperTray: "available",
 
     cartridgeRemaining: 56,
 
@@ -45,7 +45,7 @@ const printers = [
 
     status: "online",
 
-    paperTray: "Available",
+    paperTray: "available",
 
     cartridgeRemaining: 32,
 
@@ -84,7 +84,7 @@ const printers = [
 
     status: "sleep",
 
-    paperTray: "Empty",
+    paperTray: "empty",
 
     cartridgeRemaining: 78,
 
@@ -123,7 +123,7 @@ const printers = [
 
     status: "online",
 
-    paperTray: "Available",
+    paperTray: "available",
 
     cartridgeRemaining: 41,
 
@@ -162,7 +162,7 @@ const printers = [
 
     status: "offline",
 
-    paperTray: "Available",
+    paperTray: "available",
 
     cartridgeRemaining: 12,
 
@@ -224,11 +224,11 @@ function getStatusLabel(status) {
 
 function getPaperLabel(status) {
 
-  if (status === "Available") {
+  if (status === "available") {
     return "Available";
   }
 
-  return "Empty";
+  return "Tray Empty";
 
 }
 

@@ -2,7 +2,7 @@ const printers = [
   {
     id: 1,
 
-    name: "123 Building Copier Room",
+    name: "123 Copier Room",
 
     status: "online",
 
@@ -41,7 +41,7 @@ const printers = [
   {
     id: 2,
 
-    name: "123 Building Women Computer lab",
+    name: "123 Women's Computer lab",
 
     status: "online",
 
@@ -80,7 +80,7 @@ const printers = [
   {
     id: 3,
 
-    name: "123 Building Men Computer lab",
+    name: "123 Men's Computer lab",
 
     status: "sleep",
 
@@ -224,12 +224,8 @@ function getStatusLabel(status) {
 
 function getPaperLabel(status) {
 
-  if (status === "full") {
-    return "Full";
-  }
-
-  if (status === "low") {
-    return "Low";
+  if (status === "Available") {
+    return "Available";
   }
 
   return "Empty";

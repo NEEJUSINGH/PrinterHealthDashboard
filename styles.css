@@ -800,47 +800,15 @@ body {
 
 }
 
-
-
-/* FULL */
-
-.paper-status.full {
-
-  color: #07805c;
-
-  background:
-    var(--green-light);
-
+.paper-status.available {
+  background: #dcfce7;
+  color: #15803d;
 }
-
-
-
-/* LOW */
-
-.paper-status.low {
-
-  color:
-    var(--gray-dark);
-
-  background:
-    var(--gray-light);
-
-}
-
-
-
-/* EMPTY */
 
 .paper-status.empty {
-
-  color:
-    var(--red-dark);
-
-  background:
-    var(--red-light);
-
+  background: #fee2e2;
+  color: #dc2626;
 }
-
 
 
 /* =========================================================

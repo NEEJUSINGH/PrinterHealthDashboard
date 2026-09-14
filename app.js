@@ -6,7 +6,7 @@ const printers = [
 
     status: "online",
 
-    paperTray: "full",
+    paperTray: "Available",
 
     cartridgeRemaining: 56,
 
@@ -45,7 +45,7 @@ const printers = [
 
     status: "online",
 
-    paperTray: "low",
+    paperTray: "Available",
 
     cartridgeRemaining: 32,
 
@@ -84,7 +84,7 @@ const printers = [
 
     status: "sleep",
 
-    paperTray: "full",
+    paperTray: "Empty",
 
     cartridgeRemaining: 78,
 
@@ -123,7 +123,7 @@ const printers = [
 
     status: "online",
 
-    paperTray: "full",
+    paperTray: "Available",
 
     cartridgeRemaining: 41,
 
@@ -162,7 +162,7 @@ const printers = [
 
     status: "offline",
 
-    paperTray: "empty",
+    paperTray: "Available",
 
     cartridgeRemaining: 12,
 

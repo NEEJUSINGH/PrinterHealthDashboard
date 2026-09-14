@@ -423,12 +423,12 @@ function createPrinterCard(printer) {
 
 
 
-        <!-- PAPER TRAY -->
+        <!-- PAPER -->
 
         <div class="paper-column">
 
           <span class="paper-label">
-            Paper Tray:
+            Paper:
           </span>
 
           <span

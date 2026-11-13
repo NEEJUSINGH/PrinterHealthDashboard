@@ -223,15 +223,18 @@ function getStatusLabel(status) {
 
 
 function getPaperLabel(status) {
+  if (!status) return "Unknown";
 
-  if (status === "available") {
-    return "Available";
+  if (status.toLowerCase().startsWith("available")) {
+    return status;
   }
 
-  return "Empty";
+  if (status.toLowerCase() === "empty") {
+    return "Empty";
+  }
 
+  return "Unknown";
 }
-
 
 
 function getCartridgeColor(percentage) {
